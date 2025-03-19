@@ -1,0 +1,360 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap");
+
+/*basic styles*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto; /* 기본적으로 스크롤이 자연스럽게 되도록 설정 */
+}
+
+body{
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+  }
+
+i {cursor: pointer;}
+
+h3 {font-size: 2rem;}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/*font*/
+.project-tit {font-size: 3vw;}
+/*#second_project .project-tit {color: #000 !important;}*/
+.desc {
+    font-size: 18px;
+    padding-top:10px;
+}
+.item_title {font-size: 24px;}
+
+/*background*/
+.background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -100;
+    background-color: #000;
+    transition: background 1s;
+}
+
+/* */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 60px;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Georgia", arial, sans-serif;
+    /*mix-blend-mode: difference;*/
+    
+
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+header p{
+    mix-blend-mode: difference;
+    color: #fff;
+}
+
+section {height: 100vh;}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/*title*/
+#title {
+    font-family: "Georgia", "Noto Sans KR", sans-serif;
+    font-size: 10vw;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+    /*background: #000;*/
+}
+
+.title_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;;
+    min-height: auto;
+    padding-top: 0;
+    overflow-x: hidden;
+    color: #fff;
+}
+
+.text_cycle {
+    font-size: 3.5vw;
+    width: 30vw;
+    text-indent: 2px;
+    padding-top: 10px;
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards;
+    pointer-events: none;
+}
+
+/*skills*/
+#all_projects {color: white;}
+
+#skills {text-align:center;}
+#skills .flex {justify-content: center;}
+
+#skills h2,
+#portfolio h2 {
+    font-size: 4vw;
+    padding: 60px 0;
+    color: white;
+    text-align: center;
+    /*background: #333;*/
+}
+
+#skills p {
+    font-size: 2vw;
+}
+
+.skill_text_box {
+    border: 1px solid white;
+    border-radius: 25px;
+    max-width:65%;
+    height: 40vh;
+    margin: 5vh auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.projects_items {padding-top:60px;}
+
+#contact_me {
+    color: white;
+    /*background: #333;*/
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 10px;
+    border:none;
+    outline:none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-indent: 20px;
+    background: #444;
+}
+
+#contact_me form input {
+    width: 450px;
+    height: 45px;
+}
+
+#contact_me form textarea {
+    width: 450px;
+    height: 150px;
+    resize:none;
+    padding-top:10px;
+}
+
+#contactForm button {
+    background-color: #444;
+    height: 30px;
+    padding: 30px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#contactForm button:hover {
+    background-color: #222;
+}
+
+#formResponse {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#contact_me .header {font-size: 60px;}
+
+.devicon,
+.fab {
+    color: #ccc;
+    font-size: 4.5vw/*3.5rem*/;
+}
+
+.devicon:hover,
+.fab:hover {
+    color: aquamarine;
+}
+
+.grid,
+.button-group {
+    width: 90%;
+    margin: 0 auto;
+    color: white;
+  }
+  .grid-item {
+    width: 30%;
+    margin: 1%;
+    float: left;
+    /*background: rgba(16, 16, 16, 0.3);*/
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+/* 버튼 스타일 */
+.button-group {
+    margin-bottom: 20px;
+}
+.button-group button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#third_project .info-box a,
+#second_project .info-box a {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid white;
+    color: white;
+    border-radius: 10px;
+}
+
+#second_project .info-box a {background: rgba(0, 0, 0, 0.6);}
+
+#third_project a:hover,
+#second_project .desc_buttons a:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/*#second_project {color: #000;}*/
+
+#third_project .info-box a,
+#second_project .info-box a {
+    display:inline-block;
+    color: white;
+    text-align:center;
+    margin-top:20px;
+    width: 45%;
+    max-width: 150px;
+    padding: 12px 0;
+}
+
+/*커서*/
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    mix-blend-mode: difference;
+    opacity: 0;
+}
+
+.cursor span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    white-space: nowrap;
+    font-family: "Fahkwang", arial, sans-serif;
+}
+
+.project2{
+    width: 100%;
+    height: 50vh;
+    left: 50px;
+    justify-content: center;
+}
+.project2 img{
+    max-height: 100%;
+}
+
+.button_lists p{
+    padding: 5px 0;
+}
+
+@media screen and (max-width: 511px){
+    #title {font-size: 14vw;}
+    .title_text {gap: 20px;}
+
+    .devicon {font-size: 4rem;}
+    .fab {font-size: 4.5rem !important;}
+
+    .container {width: 90%;}
+    #contact_me .header {font-size: 11.5vw;}
+
+    #contact_me form {
+        width: 90%;
+    }
+    
+    #contact_me form input,
+    #contact_me form textarea {
+        padding: 10px 0;
+    }
+
+    #contact_me form input,
+    #contact_me form textarea,
+    #contact_me form button {
+        width: 100%;
+    }
+}

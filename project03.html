@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 소개 - 서울스팟</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #111;
+            color: #fff;
+        }
+        h2 {font-size: 40px;}
+        #section1 {
+            margin-top:80px;
+        }
+        p {padding: 20px 0;}
+        .section-inner {
+            width: 80%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        /*포폴 이미지*/
+        .port_img{
+            width: 100%;
+            height: 60vh;
+            float: right;
+            transition: 0.5s;
+        }
+        .port_img.active{
+            opacity: 1;
+            left: 0;
+        }
+        .portfoLio{
+            width:100%;
+            height: 60vh;
+            float: right;
+            overflow: hidden;
+        }
+        .portfoLio > img{
+            width: 100%;
+        }
+        .project3_info_color{
+            gap: 10%;
+            padding-top: 20px;
+        }
+        .color_black{
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            background: #000;
+        }
+        .color_gray{
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            background: #333;
+        }
+        .color_white{
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            background: #fff;
+        }
+    </style>
+</head>
+</head>
+<body>
+    <section id="third_project" data-color="#333" style="display: flex; align-items: center; justify-content: space-evenly; height:100vh;">
+        <div class="flex" style="flex-direction: column; width: 90%; gap: 5vh;">
+            <div class="port_img" style="width: 90%;">
+                <div class="portfoLio">
+                    <img src="seoulspot.png" alt="서울스팟 페이지">
+                </div>
+            </div>
+            <div class="flex" style="width: 90%; flex-direction: row; justify-content: space-between;">
+                <div class="column-left" style="width:45%;">
+                    <a href="#" class="thumb-box" target="_blank" data-img>
+                        <img src="Logo_SeoulSpot.svg" alt="서울스팟 로고">
+                    </a>
+                </div>
+                <div class="column-right" style="width:45%; color:white;">
+                    <div class="info-box">
+                        <div class="pagination">
+                            <em class="current">
+                                <span class="blind hidden">1</span>
+                            </em>
+                            <span class="total">
+                                <span class="blind hidden">/ n</span>
+                            </span>
+                        </div>
+                        <div class="desc_buttons flex" style="gap: 60px; flex-wrap: nowrap;">
+                            <h3 class="project-tit">SeoulSpot</h3>
+                            <a href="https://wjurm.github.io/seoulspot/" class="link-page" target="_blank" data-hover>Go Site</a>
+                        </div>
+                        <p class="desc">서울스팟은 한 페이지로 구성된 사이트로, 패럴랙스 이용하였습니다.
+                            <br>외국인들을 대상으로 서울을 소개하는 웹페이지입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section1">
+        <div class="section-inner">
+            <div class="flex" style="justify-content: space-between; align-items: flex-start; margin-bottom: 90px;">
+                <div style="width:45%;">
+                    <h2>Concept</h2>
+                    <hr>
+                    <p>   
+                        패럴랙스 기능은 무언가를 소개하는 페이지를 만들 때 많이 사용되는 기능입니다.
+                        서울도 패럴랙스를 이용한 웹페이지가 있으면 좋겠다는 생각이 들어 제작해보게 되었습니다.
+                    </p>
+                    <p>
+                        SeoulSpot은 외국인들을 대상으로 한 서울에 대한 관광 정보 사이트, visitseoul.net과 english.visitkorea.or.kr의 자료를 제공하여
+                        외국인들이 정보를 쉽게 접하도록 도와주고 해당 사이트들의 방문을 유도하는 역할을 합니다.
+                    </p>
+                </div>
+                <div style="width:45%;">
+                    <h2>Color</h2>
+                    <hr>
+                    <p>
+                        외국인들이 서울의 야경을 좋아한다는 말을 들은 적이 있어서 전체적으로 어두운 배경을 주었습니다.
+                        여행객들이 밤의 서울과 낮의 서울 모두 즐기길 바라며 일부 섹션은 배경을 하얀색으로 하여 낮을 표현하였습니다.
+                    </p>
+                    <p>
+                        어두운 배경색을 가지고 있는 섹션은 그와 대비되는 흰색을 글자색으로 사용하고,
+                        하얀 배경색을 가지고 있는 섹션은 검은색을 글자색으로 사용하여 가독성을 높였습니다.
+                    </p>
+                    <div class="project3_info_color flex">
+                        <div class="color_black"></div>
+                        <div class="color_gray"></div>
+                        <div class="color_white"></div>
+                    </div>
+                </div> 
+            </div>
+            <div class="flex" style="justify-content: space-between; align-items: flex-start; margin-bottom: 90px;">
+                <div style="width:45%;">
+                    <h2>Logo</h2>
+                    <hr>
+                    <p>   
+                        <img src="images/Seoul_Text.svg" alt="서울 로고 텍스트" style="width:60%; margin-bottom:10px;">
+                        큰 강을 중심에 낀 도시인 서울의 특징을 살리고자 "SEOUL" 글자를 지나는 굽은 선을 주어 한강을 나타냈습니다.
+                    </p>
+                    <p>
+                        <img src="images/P_of_SeoulSpot.svg" alt="서울 로고 텍스트" style="max-width:80%; max-height:85px; margin-bottom:10px;">
+                        "SPOT"의 P의 일부는 삼각형처럼 변형하여 위치 아이콘과 살짝 닮게 하여 "SPOT(장소, 지점, 관광지)"의 이미지를 전달합니다.
+                    </p>
+                </div>
+                <div style="width:45%;">
+                    <h2>UI and Layout</h2>
+                    <hr>
+                    <p>
+                        한 페이지로 구성된 사이트입니다. 화면 상단에 헤더가 고정되어있으며, 페이지는 크게 7개의 섹션으로 나뉘어져 있숩니다.
+                    </p>
+                    <p>
+                        첫 섹션에서 버튼을 눌러 다른 섹션으로 한번에 이동할 수 있습니다.
+                        버튼은 모서리가 살짝 둥근 사각형으로 이루어져있으며, 각 섹션에 어울리는 아이콘이 들어가있습니다.
+                        <img src="images/project3_ui_buttons.PNG" alt="버튼 이미지 예시" style="margin-top:10px;">
+                    </p>
+                </div> 
+            </div>
+            <div class="flex" style="justify-content: space-between; align-items: flex-start; ">
+                <div style="width:45%;">
+                    <h2>Details</h2>
+                    <hr>
+                    <p>
+                        한 페이지로 구성된 사이트로, 외국인들을 대상으로 서울을 소개하는 웹페이지입니다. 스크롤을 내리거나 헤더의 글자를 눌러 다른 섹션으로 이동할 수 있습니다.
+                        헤더는 상단에 고정되어 있으며, 로고를 누르면 첫 섹션으로, 다른 글씨를 누르면 해당 섹션으로 이동합니다.
+                    </p>
+                    <h3>1st Section</h3>
+                    <div class="button_lists">
+                            각 버튼으로 이동할 수 있는 섹션의 내용은 다음과 같습니다.
+                            <p>1. Must-Visit Tourist Spots - 반드시 방문해야 할 관광장소</p>
+                            <p>2. Related Events - 해당 관광 장소와 관련된 이벤트</p>
+                            <p>3. Seoul's Districts - 서울을 크게 5개의 구역으로 나누어 소개</p>
+                            <p>4. Food - 서울에서 먹을 수 있는 음식 소개</p>
+                            <p>5. Festivals - 기타 서울의 축제, 전시, 이벤트 소개</p>
+                            <p>6. Information - 여행할 때 알면 유용한 정보들</p>
+                    </div>
+                </div>
+                <div style="width:45%;">
+                    <p style="margin-top:60px;">
+                        <img src="images/section01.png" alt="첫 섹션 이미지">
+                    </p>
+                </div> 
+            </div>
+            <div class="flex" style="justify-content: space-between; align-items: flex-start; margin-top:60px; margin-bottom: 90px;">
+                <div style="width:45%;">
+                    <p>
+                        <img src="images/section02-2.png" alt="두 번째 섹션 이미지1">
+                        <img src="images/section02-3.png" alt="두 번째 섹션 이미지2" style="display:none;">
+                    </p>
+                </div> 
+                <div style="width:45%;">
+                    <h3>2nd Section</h3>
+                    <p>   
+                        두 번째 섹션은 반드시 방문해야 할 관광장소로 선정된 6곳의 모습을 보여줍니다.
+                    </p>
+                    <p>
+                        두 번째 섹션은 크게 7개의 슬라이드로 구성되어있습니다. 첫 슬라이드에서 제공되는 6개의 이미지를 통해 어떠한 관광장소를 소개할지 알려주며, 
+                        각 이미지에 마우스를 올리면 해당 장소의 이름이 공개됩니다. 이미지를 눌렀을 경우 해당 관광장소에 대한 슬라이드로 이동합니다.
+                    </p>
+                    <p>
+                        (구현 예정, 우선은 텍스트 숨김) - 하단의 원 아이콘들은 각 슬라이드의 위치를 나타내고, 아이콘을 누르는 것을 통해 각 슬라이드로 유연하게 이동할 수 있습니다.(Pagination)
+                    </p>
+                </div>
+            </div>
+    <div>
+        <h3>3rd Section</h3>
+        <p>세 번째 섹션은 위의 관광 장소와 관련된 이벤트들을 소개합니다. 동대문 디자인 플라자에서 이루어지는 이벤트가 주로 소개될 것입니다.</p>
+        <img src="images/section03-1.png" alt="세 번째 섹션 이미지1">
+        <p></p>
+        <p>해당 섹션은 gsap을 이용한 가로 스크롤이 적용되어, 스크롤을 이용하여 이벤트 목록들을 확인할 수 있습니다. 이벤트의 이미지를 클릭하면 해당 이벤트로 넘어갑니다.</p>
+        <div class="flex">
+            <img src="images/section03-2.png" alt="세 번째 섹션 이미지2">
+        </div>
+    </div>
+    <div style="margin-top:60px;">
+        <h3>4th Section</h3>
+        <p>네 번째 섹션은 서울을 크게 5개의 구역으로 나누어 소개합니다.</p>
+        <img src="images/section04-1.png" alt="서울 구역들">
+        <img src="images/seoul-districts.png" alt="서울 구역들">
+    </div>
+    <div style="margin-top:60px;">
+        <h3>5th Section & 7th Section</h3>
+        <p>다섯 번째 섹션은 서울에서 먹을 수 있는 음식을, 일곱 번째 섹션은 여행할 때 알면 유용한 정보들을 소개합니다. 4개의 카드 형식의 항목이 준비되어있으며, 각 항목들을 hover할 경우 크기가 커집니다. </p>
+        <img src="images/section05.png" alt="다섯 번째 섹션 이미지1" style="width:70%;">
+        <p></p>
+        <p>음식 섹션에선 다양한 음식이 나타난다는 느낌을 주기 위해 카드가 위아래에서 등장하게 하였으며, 정보 섹션에선 정보들이 준비되어있다는 느낌을 주기 위해 카드를 가지런히 정렬하였습니다.</p> 
+        <img src="images/section07.png" alt="일곱 번째 섹션 이미지1" style="width:70%;">
+    </div>
+    <div style="margin-top:60px;">
+        <h3>6th Section</h3>
+        <p>여섯 번째 섹션은 서울의 다양한 축제, 전시, 이벤트 소개합니다. 각 항목을 hover할 경우 크기가 커지고 더보기 버튼(+ 버튼)을 누를 경우 Visit Seoul의 축제, 전시, 이벤트 페이지로 이동합니다.</p>
+        <img src="images/section06.png" alt="여섯 번째 섹션 이미지1">
+    </div>
+    <div style="margin-top:200px; padding-bottom:100px;">
+        <h3 style="text-align: center;">Mockup</h3>
+        <div class="flex" style="padding: 20px; justify-content: center;">
+            <img src="images/SeoulSpotMockup.png" alt="푸터 이미지" style="height:720px;">
+        </div>
+    </div>
+</div>
+</section>
+
+
+</body>
+</html>
