@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강의 상세 페이지</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .lectureTitleArea{
+            background-color: #00060a;
+            padding-top: 3.75rem;
+            padding-bottom: 3.75rem;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .lectureTitleH1 {
+            position: relative;
+            display: box;
+            overflow: hidden;
+            visibility: visible;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            -webkit-box-orient: vertical;
+            /*-webkit-line-clamp: 3;*/
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 1.875rem;
+            color: #fff;
+            line-height: 45px;
+        }
+        .lecturesubtitle {
+            position: relative;
+            display: box;
+            overflow: hidden;
+            visibility: visible;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            -webkit-box-orient: vertical;
+            /*-webkit-line-clamp: 2;*/
+            margin-bottom: 0;
+            opacity: .8;
+            font-size: 1.125rem;
+            color: #fff;
+            line-height: 30px;
+        }
+        /*#lecture-info .nav {
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }*/
+        #lecture-info.nav .nav-item {
+            margin-right: .5rem;
+        }
+        .nav-tabs .nav-item {
+            margin-bottom: -.125rem;
+        }
+        
+        .nav-link:not(:disabled):not(.disabled) {
+            cursor: pointer;
+        }
+        .nav-link.active {
+            font-weight: 500;
+        }
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+            color: var(--primary);
+            background-color: transparent;
+            border-color: var(--primary);
+        }
+        .col-xl-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+        }
+        .card2 {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: var(--background-normal);
+            background-clip: border-box;
+            border: .0625rem solid var(--border-color);
+            border-radius: .5rem;
+            margin-bottom: 30px;
+        }
+        .card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: .0625rem solid var(--border-color);
+        }
+        .card-body {
+            flex: 1 1 auto;
+            min-height: 1px;
+            padding: 1.5rem;
+        }
+        .card-text-section {
+            display: flex;
+            border: 1px solid #ced0da;
+            border-bottom: 0;
+        }
+        .card-text-course {
+            border-bottom: 1px solid #ced0da;
+            background-color: #f7f8fa;
+            color: #494e5f;
+        }
+        .card-text-section1 {
+            display: flex;
+            flex: 0 0 auto;
+            align-items: center;
+            width: 10.3125rem;
+            font-weight: 500;
+        }
+        ._7Wyq99, .card-text-section2, .card-text-section1 {
+            padding: 1rem 1.5rem;
+        }
+        .preview_notice {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .font-weight-bold {
+            font-weight: 700 !important;
+        }
+        .justify-content-between {
+            justify-content: space-between !important;
+        }
+        .d-flex {
+            display: flex !important;
+        }
+        .lecture-arrow:not(:first-child), .lecture-name:not(:first-child), .lecture-number:not(:first-child) {
+            padding-left: 1.25rem;
+        }
+        .card-header+.list-group .list-group-item:first-child {
+            border-top: 0;
+        }
+        .list-group-item:first-child {
+            border-top-left-radius: inherit;
+            border-top-right-radius: inherit;
+        }
+        .lecture-list {
+            display: flex;
+            align-items: center;
+            height: 3.75rem;
+            margin-bottom: 0;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--border-color) !important;
+        }
+        .list-group-item {
+            vertical-align: middle;
+            border-color: var(--border-color);
+            border-style: solid;
+            border-width: 0 0 .0625rem 0;
+        }
+        .list-group-item {
+            position: relative;
+            background-color: var(--gray-000);
+            border: 0 0 .0625rem 0 solid var(--border-color);
+        }
+        .lecture-name {
+            flex: 1 1 auto;
+            overflow: hidden;
+        }
+        .lecture-arrow, .lecture-name, .lecture-number {
+            display: flex;
+            align-items: center;
+        }
+        .lecture-arrow:not(:first-child), .lecture-name:not(:first-child), .lecture-number:not(:first-child) {
+            padding-left: 1.25rem;
+        }
+        .lecture-subname:not(:first-child), .lecture-number2:not(:first-child) {
+            padding-left: 1.25rem;
+        }
+        .lecture-subname {
+            flex: 1 1 auto;
+            overflow: hidden;
+            color: #494e5f;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .lecture-subname, .lecture-number2 {
+            display: flex;
+            align-items: center;
+        }
+        .profile-img{width:50px;border-radius:50px;}
+        .lecture-sublist {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+            padding: 1rem 1.5rem;
+            border-top: 0;
+            border-bottom: 1px solid #e6e7ec;
+            cursor: pointer;
+            background-color: rgba(205, 206, 214, .08);
+            font-size: .875rem;
+            color: #313338;
+        }
+        .lecture-number {
+            flex: 0 0 auto;
+            color: #3e3b78;
+        }
+        .review-stars{
+            display: flex;
+            justify-content: center;
+        }
+        .course-reviews{display:flex;gap:20px;padding:20px; border-top:1px solid #ced0da;}
+        .course-reviews:last-child{border-bottom:1px solid #ced0da;}
+        .flex.morebox{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .additional-box{margin-top:10px;}
+        .flex{display:flex;}
+        .container-lg{justify-content: space-between;}
+        aside{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            width: 20%;
+            min-width: 20%;
+            height: 100%;
+            position: sticky;
+            top: 0;
+            border:1px solid #ced0da;
+            border-radius:.5rem;
+            overflow: hidden;
+            padding:0 0 40px 0;
+        }
+        .course-small-img{overflow:hidden;}
+        aside button{
+            width:90%;
+            height:40px;
+            background:#3e3b78;
+            color:#fff;
+            outline:none;
+            border:none;
+            border-radius:5px;
+        }
+        .aside-description{padding:0 20px;}
+        .aside-description p:first-child{
+            display: block;
+        }
+        .lecture-description-article{margin:60px 0;}
+        .additional-box{background:#3e3b78; border:1px solid #3e3b78;}
+        .additional-box:hover{background:#24224e; border:1px solid #24224e;}
+        hr {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        #lecture-info .nav {
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container PC">
+            <h1>
+                <a href="index.html"><img src="images/Logo2.svg" alt="캐치코드"></a>
+            </h1>
+            <div class="logo-and-gnb">
+                <ul class="gnb">
+                    <li>
+                        <a href="search.html">강의</a>
+                        <ul class="lists">
+                            <li><a href="search.html">HTML</a></li>
+                            <li><a href="search.html">CSS</a></li>
+                            <li><a href="search.html">JAVASCRIPT</a></li>
+                            <li><a href="search.html">PYTHON</a></li>
+                            <li><a href="search.html">PHP</a></li>
+                            <li><a href="search.html">SQL</a></li>
+                            <li><a href="search.html">C</a></li>
+                            <li><a href="search.html">C++</a></li>
+                            <li><a href="search.html">REACT</a></li>
+                            <li><a href="search.html">JQUERY</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">커뮤니티</a>
+                        <ul class="lists">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">질문/답변</a></li>
+                            <li><a href="#">수강평</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form method="post">
+                    <input type="search" placeholder="무엇을 배우고 싶으세요?">
+                    <button class="search-btn"></button>
+                </form>
+                <ul class="service">
+                    <li class="login"><a href="login.html"><img src="images/login.svg" alt="로그인"></a></li>
+                    <li class="register"><a href="join.html"><img src="images/join.svg" alt="회원가입"></a></li>
+                    <li><a href="myclassroom.html"><img src="images/myclass.svg" alt="나의 강의실"></a></li>
+                    <li><a href="#"><img src="images/service.svg" alt="고객센터"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container Tablet">
+            <div class="tablet-header">
+                <h1>
+                    <a href="index.html"><img src="images/Logo2.svg"></a>
+                </h1>
+                <form method="post">
+                    <input type="search" placeholder="무엇을 배우고 싶으세요?">
+                    <button class="search-btn"></button>
+                </form>
+                <a href="login.html"><img src="images/profile.svg" class="profile-img"></a>
+            </div>
+            </div>
+        <div class="gnb Tablet">
+            <div class="header-gap">
+                <li>
+                    <a href="search.html">강의</a>
+                    <ul class="lists">
+                        <li><a href="search.html">HTML</a></li>
+                        <li><a href="search.html">CSS</a></li>
+                        <li><a href="search.html">JAVASCRIPT</a></li>
+                        <li><a href="search.html">PYTHON</a></li>
+                        <li><a href="search.html">PHP</a></li>
+                        <li><a href="search.html">SQL</a></li>
+                        <li><a href="search.html">C</a></li>
+                        <li><a href="search.html">C++</a></li>
+                        <li><a href="search.html">REACT</a></li>
+                        <li><a href="search.html">JQUERY</a></li>
+                    </ul>
+                </li>
+                <li><a href="community.html">커뮤니티</a>
+                    <ul class="lists">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">질문/답변</a></li>
+                        <li><a href="#">수강평</a></li>
+                    </ul>
+                </li>
+                <li><a href="myclassroom.html">나의 강의실</a></li>
+                <li><a href="#">고객센터</a></li>
+            </div>
+        </div>
+        <div class="gnb mobile">
+            <span class="btn_menu_mobile" title="메뉴">
+                
+            </span>
+            <h1 class="logo-mobile">
+                <a href="index.html"><img src="images/Logo2.svg"></a>
+            </h1>
+            <div class="hidden btn_search_hidden">
+                <input type="search" placeholder="무엇을 배우고 싶으세요?">
+
+            </div>
+            <button type="button" name="search" class="btn_search_mobile" title="검색">
+                <img src="images/search.svg">
+            </button>
+        </div>
+        <nav class="nav mobile">
+            <ul class="gnb_nav">
+                <div class="header-btn">
+                    <a href="login.html" class="login-mobile">로그인</a>
+                    <a href="join.html" class="login-join">회원가입</a>
+                </div>
+                <li>
+                    <a href="#" class="bold open-courses">
+                        강의<span class="sub_menu_toggle_btn"></span>
+                    </a>
+                    <ul class="course-list">
+                        <li><a href="search.html">HTML</a></li>
+                        <li><a href="search.html">CSS</a></li>
+                        <li><a href="search.html">JAVASCRIPT</a></li>
+                        <li><a href="search.html">PYTHON</a></li>
+                        <li><a href="search.html">PHP</a></li>
+                        <li><a href="search.html">SQL</a></li>
+                        <li><a href="search.html">C</a></li>
+                        <li><a href="search.html">C++</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="bold open-services">
+                        커뮤니티<span class="sub_menu_toggle_btn"></span>
+                    </a>
+                    <ul class="service-list">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">질문/답변</a></li>
+                        <li><a href="#">수강평</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--header end-->
+<section id="lecture-info">
+    <div class="lectureTitleArea">
+        <div class="mobile-padding">
+            <div class="container-lg row">
+                <h1 class="lectureTitleH1" data-mkt-id="edu_lecture_h1_lectureName">모든 개발자를 위한 HTTP 웹 기본 지식</h1>
+                <p class="lecturesubtitle">실무에 꼭 필요한 HTTP 핵심 기능과 올바른 HTTP API 설계 방법을 학습합니다.</p>
+            </div> 
+        </div>
+    </div>
+    <div id="subMenu" class="row">
+            <div class="container-lg subMenuCon">
+                <ul class="nav nav-tabs snb">
+                    <li class="nav-item">
+                        <a class="subtitle-1 nav-link">강좌 소개</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tabContents_2" class="nav-link">미리 보기</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tabContents_3" class="nav-link">교육 과정</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tabContents_4" class="nav-link">강의자 소개</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tabContents_5" class="nav-link">강좌 후기</a>
+                    </li>
+                </ul>
+            </div>
+    </div>
+    <div>
+        <div class="container-lg flex row">
+                <div class="col-lg-8 col-xl-9">
+                    <div class="mobile-padding">
+                        <div class="tab-pane tabContents_">
+                            <div class="card2">
+                                <div class="card-header">
+                                    <h3><strong>강좌 소개</strong></h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-text-course">
+                                        <div class="card-text-section">
+                                            <div class="card-text-section1">
+                                                난이도
+                                            </div>
+                                            <div class="card-text-section2">쉬움</div>
+                                        </div>
+                                        <div class="card-text-section">
+                                            <div class="card-text-section1">
+                                                카테고리
+                                            </div>
+                                            <div class="card-text-section2">프로그래밍 </div>
+                                        </div>
+                                        <div class="card-text-section">
+                                            <div class="card-text-section1">
+                                                태그
+                                            </div>  
+                                            <div class="card-text-section2">네트워크</div>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                    <div>
+                                        <div class="lecture-description-article">
+                                            <p>
+                                                <h3><strong>수업 소개</strong></h3>
+                                            </p>
+                                            <hr>
+                                            <p style="font-size: 16px;">
+                                                이 수업에서는 컴퓨터 공학의 가장 기본이지만, 전공 수업을 듣지 않으면 공부하기 어려운 
+                                                인터넷 기본 지식과 도메인, 네임서버, HTTPS 등의 네트워크에 대하여 소개합니다. 
+                                            </p>
+                                            <p style="font-size: 16px;">
+                                                매일 같이 사용하고 있는 인터넷이기에 막상 지식의 측면으로 이야기하기 어려운 인터넷이 어떻게 돌아가는지 그 흐름을 파악하고, 도메인이란 무엇인지, 어떻게 찾아야 하며 구매 및 설치를 어떻게 해야 하는지 배우고, 나아가 웹 서버 운영 방법 등을 차근 차근 짚어봅니다.
+                                            </p>
+                                        </div>
+                                        <div class="lecture-description-article">
+                                            <p>
+                                                <h3><strong>학습 목표</strong></h3>
+                                            </p>
+                                            <hr>
+                                            <p style="font-size: 16px;">
+                                                인터넷과 도메인, 네임서버, HTTPS를 이해할 수 있습니다.
+                                            </p>
+                                            <p style="font-size: 16px;">
+                                                        직접 웹서버를 운영 할 수 있을 정도의 지식을 쌓을 수 있습니다.
+                                            </p>
+                                        </div>
+                                        <div class="lecture-description-article" style="display:none">
+                                            <p>
+                                                <span style="font-size: 20px;"><b>강의자 소개</b></span>
+                                            </p>
+                                            <hr>
+                                            <ul>
+                                                <li>
+                                                    <span style="font-size: 16px;">약 10만 멤버로 구성된 개발 커뮤니티 생활코딩 운영</span>
+                                                    <br>
+                                                </li>
+                                                <li>
+                                                    <span style="font-size: 16px;">일반인들에게 프로그래밍을 알려주는 무료 온라인, 오프라인 수업을 제공</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tabContents_1" class="tab-pane tabContents_">
+                            <div class="preview_notice font-weight-bold card2 card-body">
+                                <p class="card-text">
+                                    <span>이 강좌는 미리 보기를 제공합니다.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div id="tabContents_2" class="tab-pane tabContents_">
+                            <div class="card2">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <span><span>미리 보기</span></span>
+                                        <div role="button" tabindex="-1">
+                                            <span style="display:none;">모두 펼치기</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li>
+                                        <ul class="course-first-preview">
+                                            <li class="lecture-list list-group-item">
+                                                <div class="lecture-number">01</div>
+                                                <div class="lecture-name">도메인</div>
+                                                <div class="lecture-arrow">
+                                                    <img src="images/up_btn.svg" alt="arrow">
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>도메인이란?</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>도메인의 검색과 구입</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>호스트 설정</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>포워딩 설정</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="tabContents_3" class="tab-pane tabContents_">
+                            <div class="card2">
+                                <div class="card-header">
+                                    <div class="d-flex justify-content-between">
+                                        <span><span>교육 과정</span></span>
+                                        <div role="button" tabindex="-1">
+                                            <span style="display:none;">모두 펼치기</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li>
+                                        <ul class="course-first">
+                                            <li class="lecture-list list-group-item">
+                                                <div class="lecture-number">01</div>
+                                                <div class="lecture-name">도메인</div>
+                                                <div class="lecture-arrow">
+                                                    <img src="images/up_btn.svg" alt="arrow">
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>도메인이란?</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>도메인의 검색과 구입</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>호스트 설정</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>포워딩 설정</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul class="course-second">
+                                            <li class="lecture-list list-group-item">
+                                                <div class="lecture-number">02</div>
+                                                <div class="lecture-name">네임서버</div>
+                                                <div class="lecture-arrow">
+                                                    <img src="images/down_btn.svg" alt="arrow">
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>네임서버란?</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>hosts 파일</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>집에서 웹서버 운영하기 (1/3)</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>집에서 웹서버 운영하기 (2/3)</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>집에서 웹서버 운영하기 (3/3)</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul class="course-third">
+                                            <li class="lecture-list list-group-item">
+                                                <div class="lecture-number">03</div>
+                                                <div class="lecture-name">HTTPS와 SSL 인증서</div>
+                                                <div class="lecture-arrow">
+                                                    <img src="images/down_btn.svg" alt="arrow">
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>HTTPS와 SSL 인증서</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>대칭키</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>공개키</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>SSL 인증서</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>인증서 동작 방법</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>SSL 통신 과정</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>StarSSL 사용법 (1/2)</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>StarSSL 사용법 (2/2)</span>
+                                                </div>
+                                            </li>
+                                            <li class="lecture-sublist hidden">
+                                                <div class="lecture-number2">
+                                                     
+                                                </div>
+                                                <div class="lecture-subname">
+                                                    <span>Apache2 SSL 적용</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="tabContents_4" class="tab-pane tabContents_">
+                            <div class="card2">
+                                <div class="card-header">
+                                    <h3><strong>강의자 소개</strong></h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="override-v4" style="padding-top: 10px;">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <div style="display: inline-block; vertical-align: middle; width: 60px; height: 60px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;">
+                                                    <img width="60px" height="60px" src="images/profile4.png" alt="황금사과" title="황금사과" style="max-width: 100%; width: 60px; height: 60px; border-radius: 100%;">
+                                                </div>
+                                            </div>
+                                            <div class="padding-left">
+                                                <span class="lecturer-name">황금사과</span>
+                                                <a href="#" target="_blank" class="d-flex align-items-center" rel="noreferrer">
+                                                    <img src='images/link.svg' width="16">
+                                                    <span>홈페이지</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <a href="#" target="_blank" class="d-flex align-items-center" rel="noreferrer">
+                                                <svg fill="currentColor" width="16" height="16" class="mr-1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">…</svg>
+                                                <span style="display:none;">홈페이지</span>
+                                            </a>
+                                            <a href="#" target="_blank" class="d-flex align-items-center" rel="noreferrer">
+                                                <svg fill="currentColor" width="16" height="16" class="mr-1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">…</svg>
+                                                <span style="display:none;">페이스북</span>
+                                            </a>
+                                            <a href="#" target="_blank" class="d-flex align-items-center" rel="noreferrer">
+                                                <svg fill="currentColor" width="16" height="16" class="mr-1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">…</svg>
+                                                <span style="display:none;">페이스북 그룹</span>
+                                            </a>
+                                            <a href="#" target="_blank" class="d-flex align-items-center" rel="noreferrer">
+                                                <svg fill="currentColor" width="16" height="16" class="mr-1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">…</svg>
+                                                <span style="display:none;">유튜브</span>
+                                            </a>
+                                        </div>
+                                        <div class="position-relative">
+                                            <div>
+                                                <div>
+                                                    진짜 실무에 필요한 제대로 된 개발자가 될 수 있도록, 교육하는 것이 저의 목표입니다.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <hr style="margin:calc(30px + 1.875rem) 0 1.875rem">
+                                        <div class="container-lg" style="padding: 30px 0 60px;">
+                                            <div>
+                                                <h1>
+                                                    <span>
+                                                        강사의 더 많은 강좌
+                                                        <span class="text-primary" style="font-size: 1rem;">(4)</span>
+                                                    </span>
+                                                </h1>
+                                                    <div class="recommended-courses">
+                                                        <div class="recommended-course no-mobile">
+                                                            <div class="col-3">
+                                                                <img src="images/anothercourse00.png">
+                                                                <strong class="course-name">스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술</strong>
+                                                                <p>황금사과</p>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <img src="images/anothercourse01.png">
+                                                                <strong class="course-name">스프링 핵심 원리 - 기본편</strong>
+                                                                <p>황금사과</p>
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <img src="images/anothercourse03.png">
+                                                                <strong class="course-name">황금사과의 자바 입문 - 코드로 시작하는 자바 첫걸음</strong>
+                                                                <p>황금사과</p>
+                                                            </div>
+                                                            <div class="col-3 last">
+                                                                <img src="images/anothercourse04.png">
+                                                                <strong class="course-name">황금사과의 실전 자바 - 기본편</strong>
+                                                                <p>황금사과</p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Swiper -->
+                                                        <div class="swiper mySwiper mobile">
+                                                            <div class="swiper-wrapper">
+                                                                <div class="swiper-slide">
+                                                                    <img src="images/anothercourse00.png">
+                                                                    <strong class="course-name">스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술</strong>
+                                                                    <p>황금사과</p>
+                                                                </div>
+                                                                <div class="swiper-slide">
+                                                                    <img src="images/anothercourse01.png">
+                                                                    <strong class="course-name">스프링 핵심 원리 - 기본편</strong>
+                                                                    <span>황금사과</span>
+                                                                </div>
+                                                                <div class="swiper-slide">
+                                                                    <img src="images/anothercourse03.png">
+                                                                    <strong class="course-name">황금사과의 자바 입문 - 코드로 시작하는 자바 첫걸음</strong>
+                                                                    <span>황금사과</span>
+                                                                </div>
+                                                                <div class="swiper-slide">
+                                                                    <img src="images/anothercourse04.png">
+                                                                    <strong class="course-name">황금사과의 실전 자바 - 기본편</strong>
+                                                                    <span>황금사과</span>
+                                                                </div>
+                                                            </div>  
+                                                    </div>
+                                                </div>  
+                                        </div>
+                                            
+                                            <div>
+                                                <div class="override-v4">
+                                                    <div>
+                                                        <div class="lecture-card">
+                                                            <a class="lecture-card" href="#">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tabContents_5" class="tab-pane tabContents_">
+                            <div class="card2">
+                                <div class="card-header">
+                                    <span>강좌 후기</span>
+                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <div class="review-stars" style="display:none;">
+                                            <div role="button" tabindex="-1">
+                                                <div>
+                                                    <label for="Rating-star-5">★</label>
+                                                    <label for="Rating-star-4">★</label>
+                                                    <label for="Rating-star-3">★</label>
+                                                    <label for="Rating-star-2">★</label>
+                                                    <label for="Rating-star-1">★</label>
+                                                </div>
+                                                <span>평균평점</span>
+                                                <span>5.0</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div>
+                                            <div class="course-reviews">
+                                                <img class="profile-img" src="images/profile.svg" alt="user">
+                                                <div>
+                                                    <span class>김택용</span>
+                                                    <span>2024. 4. 4.</span>
+                                                    <p>바로바로 이해가 갑니다!</p>
+                                                </div>
+                                            </div>
+                                            <div class="course-reviews">
+                                                <img class="profile-img" src="images/profile.svg" alt="user">
+                                                <div>
+                                                    <span class>스페로우</span>
+                                                    <span>2024. 2. 3.</span>
+                                                    <p>도움이 많이 됐습니다.</p>
+                                                </div>
+                                            </div>
+                                            <div class="course-reviews">
+                                                <img class="profile-img" src="images/profile.svg" alt="user">
+                                                <div>
+                                                    <span class>재키</span>
+                                                    <span>2024. 1. 23.</span>
+                                                    <p>최대한 쉽게 풀어서 설명해주셔서 좋아요!</p>
+                                                </div>
+                                            </div>
+                                            <div class="course-reviews">
+                                                <img class="profile-img" src="images/profile.svg" alt="user">
+                                                <div>
+                                                    <span class>송병구</span>
+                                                    <span>2024. 1. 5.</span>
+                                                    <p>핵심을 잘 요약해주십니다.</p>
+                                                </div>
+                                            </div>
+                                            <div class="course-reviews hidden">
+                                                <img class="profile-img" src="images/profile.svg" alt="user">
+                                                <div>
+                                                    <span class>만개화</span>
+                                                    <span>2024. 1. 5.</span>
+                                                    <p>좋아요!</p>
+                                                </div>
+                                            </div>
+                                            <div class="course-reviews hidden">
+                                                <img class="profile-img" src="images/profile.svg" alt="user">
+                                                <div>
+                                                    <span class>꽃의노래</span>
+                                                    <span>2024. 1. 4.</span>
+                                                    <p>질 좋은 강의를 들을 수 있게 해주셔서 감사합니다!</p>
+                                                </div>
+                                            </div>
+                                            <div class="course-reviews hidden">
+                                                <img class="profile-img" src="images/profile.svg" alt="user">
+                                                <div>
+                                                    <span class>한잔두잔</span>
+                                                    <span>2024. 1. 3.</span>
+                                                    <p>매우 만족하면서 들었습니다.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex morebox">
+                                            <div class="additional-box">
+                                                <p class="question-question"><span>더 보기</span><img class="morefaq" src="images/plus.svg" alt="질문 더보기"></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <aside id="followingMenu">
+                <div class="course-small-img">
+                    <img src="images/course00.png">
+                </div>
+                <div class="aside-description">
+                    <p>모든 개발자를 위한 HTTP 웹 기본 지식</p>
+                    <p class="price">₩44,000</p>
+                </div>
+                <button>수강신청 하기</button>
+                <button>바구니에 담기</button>
+            </aside>
+            <div class="followingMenuM mobile">
+                <div class="followingMenu-inner">
+                    <div class="followingMenuRow1">
+                        <button>수강신청 하기</button>
+                        <button>바구니에 담기</button>
+                    </div>
+                    <div class="followingMenuRow2">
+                        <span class="price">총 ₩44,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="popular-courses row">
+        <div class="mobile-padding">
+            <h2>추천 강의</h2>
+            <div class="recommended-courses">
+                <div class="recommended-course no-mobile">
+                    <div class="col-3">
+                        <img src="images/course5.png">
+                        <strong class="course-name">아는 만큼 보이는 크롬 개발자 도구</strong>
+                        <p>제주코딩베이스캠프</p>
+                    </div>
+                    <div class="col-3">
+                        <img src="images/course6.png">
+                        <strong class="course-name">CSS Flex와 Grid 제대로 익히기</strong>
+                        <p>1분 코딩</p>
+                    </div>
+                    <div class="col-3">
+                        <img src="images/course7.png">
+                        <strong class="course-name">[리액트 1부] 만들고 비교하며 학습하는 리액트 (React)</strong>
+                        <p>김정환</p>
+                    </div>
+                    <div class="col-3 last">
+                        <img src="images/course8.png">
+                        <strong class="course-name">견고한 JS 소프트웨어 만들기</strong>
+                        <p>김정환</p>
+                    </div>
+                </div>
+                <!-- Swiper -->
+                <div class="swiper mySwiper mobile">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="images/course5.png">
+                            <strong class="course-name">아는 만큼 보이는 크롬 개발자 도구</strong>
+                            <p>제주코딩베이스캠프</p>
+                    </div>
+                        <div class="swiper-slide">
+                            <img src="images/course6.png">
+                            <strong class="course-name">CSS Flex와 Grid 제대로 익히기</strong>
+                            <p>1분 코딩</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/course7.png">
+                            <strong class="course-name">[리액트 1부] 만들고 비교하며 학습하는 리액트 (React)</strong>
+                            <p>김정환</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/course8.png">
+                            <strong class="course-name">견고한 JS 소프트웨어 만들기</strong>
+                            <p>김정환</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+    <footer class="footer">
+        <div class="footer-padding">
+            <p>개인정보처리방침
+                이용약관
+                (주)캐치코드 사업자 정보 
+            <p>대표자: 엄우진 | 사업자번호: 999-00-00000 사업자 정보 확인
+                통신판매업: 20XX-서울구로-9999 | 개인정보보호책임자: 조해용</p>
+            <p>이메일: info@catchcode.com | 전화번호: 070-1234-9999 | 주소: 서울특별시 구로구 경인로10번길 20 3동 5층</p>
+            <p>©CATCHCODEKR. ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+      <script>
+        const follow = document.getElementById('followingMenu');
+        window.addEventListener('scroll', function(){
+            if(document.documentElement.scrollTop>100){
+            follow.style.top = document.documentElement.scrollTop-200 + 'px';
+            }
+        });
+
+        const readMore = document.querySelector('.additional-box');
+        const hiddenReviews = document.querySelectorAll('.course-reviews.hidden');
+
+        readMore.addEventListener('click', () => {
+            readMore.classList.toggle('hidden');
+            hiddenReviews.forEach(review => {
+                review.classList.toggle('hidden');
+            });
+        });
+
+        const courseFirstPreview = document.querySelector('.course-first-preview');
+        const courseFirstPreviewLists = document.querySelectorAll('.course-first-preview>.lecture-sublist');
+
+        courseFirstPreview.addEventListener('click', () => {
+            courseFirstPreviewLists.forEach(firstplist => {
+                firstplist.classList.toggle('hidden');
+            });
+        });
+
+        const courseFirst = document.querySelector('.course-first');
+        const courseFirstLists = document.querySelectorAll('.course-first>.lecture-sublist');
+
+        courseFirst.addEventListener('click', () => {
+            courseFirstLists.forEach(firstlist => {
+                firstlist.classList.toggle('hidden');
+            });
+        });
+
+        const courseSecond = document.querySelector('.course-second');
+        const courseSecondLists = document.querySelectorAll('.course-second>.lecture-sublist.hidden');
+
+        courseSecond.addEventListener('click', () => {
+            courseSecondLists.forEach(secondlist => {
+                secondlist.classList.toggle('hidden');
+            });
+        });
+
+        const courseThird = document.querySelector('.course-third');
+        const courseThirdLists = document.querySelectorAll('.course-third>.lecture-sublist.hidden');
+
+        courseThird.addEventListener('click', () => {
+            courseThirdLists.forEach(thirdlist => {
+                thirdlist.classList.toggle('hidden');
+            });
+        });
+
+        const courseMenus = document.querySelectorAll('.list-group.list-group-flush>li>ul');
+
+        courseMenus.forEach((courseMenu) => {
+        const courseArrow = courseMenu.querySelector('.lecture-arrow img');
+
+        if (courseArrow) {
+            courseMenu.addEventListener('click', (e) => {
+            courseArrow.classList.toggle('active');
+                });
+            }
+        });
+
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: "auto",
+            centeredSlides: true,
+            spaceBetween: 30,
+            loop: true,
+            navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+            },
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        },
+        });
+
+        //상단 슬라이드 메뉴 제어
+        let temp = 0;
+        let startX = 0;
+        let endX = 0;
+        let isDragging = false;
+
+        $(document).ready(function () {
+            let $snb = $('#subMenu .nav.nav-tabs.snb');
+
+            // 초기 left 값을 명시적으로 설정
+            temp = parseInt($snb.css('left')) || 0;
+            $snb.css('left', temp + 'px');
+
+            $('#subMenu').on('touchstart', function (event) {
+                event.preventDefault();
+                startX = event.originalEvent.touches[0].screenX;
+                isDragging = true;
+                console.log('Touch Start - startX:', startX, 'temp:', temp);
+            });
+
+            $('#subMenu').on('touchmove', function (event) {
+                if (!isDragging) return;
+                event.preventDefault();
+
+                endX = event.originalEvent.touches[0].screenX;
+                let distance = (startX - endX) / 2; // 이동 속도 조정
+
+                let minLeft = $('#subMenu').width() - $snb.width();
+                
+                temp = parseInt($snb.css('left')) || 0;
+                temp -= distance;
+
+                // temp 범위 제한
+                if (temp > 0) {
+                    temp = 0;
+                } else if (temp < minLeft) {
+                    temp = minLeft*1;
+                }
+
+                $snb.css('left', temp + 'px');
+                console.log('Touch Move - endX:', endX, 'distance:', distance, 'temp:', temp);
+
+                startX = endX;
+            });
+
+            $('#subMenu').on('touchend', function (event) {
+                isDragging = false;
+                console.log('Touch End - Final temp:', temp);
+            });
+        });
+      </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/main.js"></script> 
+</body>
+</html>

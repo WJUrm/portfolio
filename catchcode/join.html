@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        main.login div.context {
+            padding-bottom: 60px;
+        }
+        div.context {
+            box-sizing: border-box;
+            padding-bottom: 160px;
+            overflow-x: hidden;
+        }
+        .container{
+            max-width: 560px;
+            margin: 0 auto;
+        }
+        div.box_login {
+            max-width: 560px;
+            margin: 0 auto 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        div[data-role=login] {
+            padding: 50px 80px;
+            box-sizing: border-box;
+        }
+        div[data-role=login] > div[data-name=email] > input {
+            background-image: url(../images/login_ico_id.png);
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+        }
+        div[data-role=login] > div[data-role=input] > input {
+            padding: 0 20px;
+            height: 60px;
+            border-radius: 3px;
+            box-shadow: 0 0 0 1000px white inset;
+        }
+        .login-section{position:relative;}
+        .btn-primary.disabled, .btn-primary:disabled {
+            position:absolute;
+            top: 15px;
+            right: 10px;
+            width:50px;
+            height:30px;
+            cursor: not-allowed;
+        }
+        div[data-role=input][data-type=input] > input {
+            border: 1px solid #d1d1d1;
+            background: #fff;
+            box-sizing: border-box;
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            line-height: 18px;
+            border-radius: 0px;
+        }
+        main.login div.context div.box_login div[data-type='input'] > label {
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            overflow: hidden;
+        }
+        div[data-role=login] > div.check_search > div.search > a.email {
+            margin: 0 15px;
+        }
+        div[data-role=login] > div.check_search > div.search > a {
+            position: relative;
+            color: #808080;
+        }
+        div[data-role=login] > div.check_search > div.search {
+            float: right;
+            padding: 5px 0;
+            box-sizing: border-box;
+        }
+        div[data-role=login] > div[data-role=button] {
+            margin-top: 25px;
+            padding: 0;
+        }
+        div[data-role=login] > div[data-role=button] > button.button_login {
+            margin-bottom: 5px;
+        }
+        div[data-role=login] > div[data-role=button] > button {
+            display: inline-block;
+            width: 100%;
+            height: 60px;
+            padding: 0;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 60px;
+            border:none;
+        }
+        div[data-role="button"] button.btn_submit {
+            color: #fff;
+            background: #3e3b78;
+        }
+        div[data-role="button"] button {
+            box-sizing: border-box;
+            padding: 0 30px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+        div[data-role=login] > div[data-role=button] > button.button_join {
+            line-height: 58px;
+            border: 1px solid #3e3b78;
+            background: #fff;
+            color: #3e3b78;
+        }
+        main.login div.context div.check_search > label {
+            visibility: hidden;
+        }
+        div[data-role=login] > div.check_search > div.search > a.email:after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            right: -10px;
+            top: 3px;
+            width: 1px;
+            height: 15px;
+        }
+        div[data-role=login] > div.check_search > div.search > a {
+            position: relative;
+            color: #808080;
+        }
+        .search a{display:inline;}
+        .box_login div.sns {
+            padding: 30px 80px;
+            border-top: 1px solid #e0e0e0;
+            box-sizing: border-box;
+            overflow:hidden;
+        }
+        .box_login div.sns > h4 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            text-align: center;
+        }
+        .box_login div.sns > ul > li > a > div.img {
+            height: 50px;
+            margin-bottom: 10px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .box_login div.sns > ul > li.kakao > a > div.img {
+            background-image: url(images/sns_ico_kakako.png);
+        }
+        .box_login div.sns > ul > li.naver > a > div.img {
+            background-image: url(images/sns_ico_naver.png);
+        }
+        .box_login div.sns > ul > li.google > a > div.img {
+            background-image: url(images/sns_ico_google.png);
+        }
+        main.login div.context div.box_login div.sns > ul > li {
+            width: 20%;
+        }
+        .box_login div.sns > ul > li {
+            float: left;
+            width: calc(100% / 6);
+            text-align: center;
+        }
+        .sns li{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sns li a{width:50px;}
+        .info i{
+            display: inline-block;
+            width: 18px;
+            height: 21px;
+            background: url(images/info_ico.png) no-repeat top center;
+            vertical-align: middle;
+        }
+        .sns ul{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        div[data-role=login]>div.center{padding-top:15px;}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+            $(function(){
+                $('.btn_menu_mobile').click(function(){
+                    $('.gnb_nav').stop().slideToggle('fast');
+                })
+            })
+            $(function(){
+                $('.open-courses').click(function(){
+                    $('.course-list').stop().slideToggle('fast');
+                })
+            })
+            $(function(){
+                $('.open-services').click(function(){
+                    $('.service-list').stop().slideToggle('fast');
+                })
+            })
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+    <header id="header">
+        <div class="container PC">
+            <h1>
+                <a href="index.html"><img src="images/Logo2.svg" alt="캐치코드"></a>
+            </h1>
+            <div class="logo-and-gnb">
+                <ul class="gnb">
+                    <li>
+                        <a href="search.html">강의</a>
+                        <ul class="lists">
+                            <li><a href="search.html">HTML</a></li>
+                            <li><a href="search.html">CSS</a></li>
+                            <li><a href="search.html">JAVASCRIPT</a></li>
+                            <li><a href="search.html">PYTHON</a></li>
+                            <li><a href="search.html">PHP</a></li>
+                            <li><a href="search.html">SQL</a></li>
+                            <li><a href="search.html">C</a></li>
+                            <li><a href="search.html">C++</a></li>
+                            <li><a href="search.html">REACT</a></li>
+                            <li><a href="search.html">JQUERY</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">커뮤니티</a>
+                        <ul class="lists">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">질문/답변</a></li>
+                            <li><a href="#">수강평</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form method="post">
+                    <input type="search" placeholder="무엇을 배우고 싶으세요?">
+                    <button class="search-btn"></button>
+                </form>
+                <ul class="service">
+                    <li class="login"><a href="login.html"><img src="images/login.svg" alt="로그인"></a></li>
+                    <li class="register"><a href="join.html"><img src="images/join.svg" alt="회원가입"></a></li>
+                    <li><a href="myclassroom.html"><img src="images/myclass.svg" alt="나의 강의실"></a></li>
+                    <li><a href="#"><img src="images/service.svg" alt="고객센터"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container Tablet">
+            <div class="tablet-header">
+                <h1>
+                    <a href="index.html"><img src="images/Logo2.svg"></a>
+                </h1>
+                <form method="post">
+                    <input type="search" placeholder="무엇을 배우고 싶으세요?">
+                    <button class="search-btn"></button>
+                </form>
+                <a href="login.html"><img src="images/profile.svg" class="profile-img"></a>
+            </div>
+            </div>
+        <div class="gnb Tablet">
+            <div class="header-gap">
+                <li>
+                    <a href="search.html">강의</a>
+                    <ul class="lists">
+                        <li><a href="search.html">HTML</a></li>
+                        <li><a href="search.html">CSS</a></li>
+                        <li><a href="search.html">JAVASCRIPT</a></li>
+                        <li><a href="search.html">PYTHON</a></li>
+                        <li><a href="search.html">PHP</a></li>
+                        <li><a href="search.html">SQL</a></li>
+                        <li><a href="search.html">C</a></li>
+                        <li><a href="search.html">C++</a></li>
+                        <li><a href="search.html">REACT</a></li>
+                        <li><a href="search.html">JQUERY</a></li>
+                    </ul>
+                </li>
+                <li><a href="community.html">커뮤니티</a>
+                    <ul class="lists">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">질문/답변</a></li>
+                        <li><a href="#">수강평</a></li>
+                    </ul>
+                </li>
+                <li><a href="myclassroom.html">나의 강의실</a></li>
+                <li><a href="#">고객센터</a></li>
+            </div>
+        </div>
+        <div class="gnb mobile">
+            <span class="btn_menu_mobile" title="메뉴">
+                
+            </span>
+            <h1 class="logo-mobile">
+                <a href="index.html"><img src="images/Logo2.svg"></a>
+            </h1>
+            <div class="hidden btn_search_hidden">
+                <input type="search" placeholder="무엇을 배우고 싶으세요?">
+
+            </div>
+            <button type="button" name="search" class="btn_search_mobile" title="검색">
+                <img src="images/search.svg">
+            </button>
+        </div>
+        <nav class="nav mobile">
+            <ul class="gnb_nav">
+                <div class="header-btn">
+                    <a href="login.html" class="login-mobile">로그인</a>
+                    <a href="join.html" class="login-join">회원가입</a>
+                </div>
+                <li>
+                    <a href="#" class="bold open-courses">
+                        강의<span class="sub_menu_toggle_btn"></span>
+                    </a>
+                    <ul class="course-list">
+                        <li><a href="search.html">HTML</a></li>
+                        <li><a href="search.html">CSS</a></li>
+                        <li><a href="search.html">JAVASCRIPT</a></li>
+                        <li><a href="search.html">PYTHON</a></li>
+                        <li><a href="search.html">PHP</a></li>
+                        <li><a href="search.html">SQL</a></li>
+                        <li><a href="search.html">C</a></li>
+                        <li><a href="search.html">C++</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="bold open-services">
+                        커뮤니티<span class="sub_menu_toggle_btn"></span>
+                    </a>
+                    <ul class="service-list">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">질문/답변</a></li>
+                        <li><a href="#">수강평</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--header end-->
+
+    <section class="login-section">
+
+    <main class="login row" id="main">
+
+	<div class="page_title_wrap">
+		<div class="container">
+			<h3 class="page_title join center">회원가입</h3>
+            <h3 class="center">캐치코드에 오신 것을 환영합니다!</h4>
+            
+		</div>
+	</div>
+
+	<div class="context mobile-padding">
+		<div class="container">
+			<div class="box_login">
+				<form name="loginform" onsubmit="return false">
+				<div data-role="login">
+					<input type="hidden" name="backURL" value="#">
+					<div data-role="input" data-type="input" data-name="email" class="login-section">
+						<label for="userid">이메일 입력</label>
+						<input type="text" id="userid" class="tabindex" name="userid" title='이메일을 입력하세요.' placeholder='이메일을 입력하세요.' style="margin-bottom: 5px;">
+                        <button type="button" disabled class="y8TqYqOzo10gWm9Wc_Bs btn btn-primary btn-sm disabled">인증</button>
+					</div>
+					<div data-role="input" data-type="input" data-name="password">
+						<label for="password">비밀번호 입력</label>
+						<input type="password" id="password" class="tabindex" name="password" title='비밀번호를 입력하세요.' placeholder='비밀번호를 입력하세요.' style="margin-bottom: 5px;" autocomplete="off">
+					</div>
+                    <div data-role="input" data-type="input" data-name="password">
+						<label for="password">비밀번호 확인</label>
+						<input type="password" id="password" class="tabindex" name="password" title='비밀번호 확인' placeholder='비밀번호 확인' style="margin-bottom: 5px;" autocomplete="off">
+					</div>
+                    <div data-role="input" data-type="input" data-name="email">
+						<label for="userid">닉네임</label>
+						<input type="text" id="userid" class="tabindex" name="userid" title='닉네임을 입력하세요.' placeholder='닉네임을 입력하세요.' style="margin-bottom: 5px;">
+					</div>
+					<div data-role="button">
+						<button type="button" name="button" class="button_login btn_submit tabindex">회원가입</button>
+					</div>
+                    <div class="center">이미 계정이 있으세요? <a href="login.html" class="inline-block" style="color: #3e3b78;">로그인</a></div>
+				</div>
+				</form>
+				<div class="sns">
+					<h4>SNS계정 로그인</h4>
+					<ul>
+						<li class="kakao">
+							<a href="javascript:;" data-href="">
+								<div class="img"></div>
+								
+							</a>
+                            <p>카카오톡</p>
+						</li>
+						<li class="naver">
+							<a href="javascript:;" data-href="">
+								<div class="img"></div>
+								<p>네이버</p>
+							</a>
+						</li>
+						<li class="google">
+							<a href="javascript:;" data-href="">
+								<div class="img"></div>
+								<p>구글</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+            <div class="info mobile-padding">
+                <strong><i class="ico_info"><span class="hidden">안내 사항</span></i> 안내 사항</strong>
+                <p class="square">
+                    회원가입이 정상적으로 진행되지 않는 경우 FAQ를 참조하시기 바랍니다.
+                </p>
+            </div>
+		</div>
+	</div>
+    </main>
+
+</section>
+
+
+    <footer class="footer">
+        <p>개인정보처리방침
+            이용약관
+            (주)캐치코드 사업자 정보 
+        <p>대표자: 엄우진 | 사업자번호: 999-00-00000 사업자 정보 확인
+            통신판매업: 20XX-서울구로-9999 | 개인정보보호책임자: 조해용</p>
+        <p>이메일: info@catchcode.com | 전화번호: 070-1234-9999 | 주소: 서울특별시 구로구 경인로10번길 20 3동 5층</p>
+        <p>©CATCHCODEKR. ALL RIGHTS RESERVED</p>
+    </footer>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script> 
+    <script>
+        var swiper2 = new Swiper(".mySwiper2", {
+            direction: "vertical",
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".notice_next",
+                prevEl: ".notice_prev",
+            },
+        });
+      </script>
+
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객센터</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .cm-index-box {
+            height: 130px;
+            background: #3e3b78;
+            position: relative;
+            box-sizing: border-box;
+            display:flex;
+        }
+        .inner, .container-inner {
+            width: 100%;/*1400px*/
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .inner{
+            display: flex;
+            align-items: center;
+        }
+        .cm-index-list {
+            float: right;
+        }
+        .cm-index-list {
+            overflow: hidden;
+        }
+        .cm-index-list li:first-child {
+            padding-left: 0;
+        }
+        .cm-index-list>li {
+            padding-left: 26px;
+        }
+        .cm-index-list li {
+            position: relative;
+            float: left;
+            padding-left: 32px;
+            cursor: default;
+        }
+        .cm-index-list>li:first-child::before {
+            content: none;
+        }
+        .cm-index-list>li::before {
+            content: "·";
+            left: 11px;
+            top: 10px;
+            color: #fff;
+        }
+        .cm-index-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+            left: 9px;
+            color: #9e9e9e;
+            font: 20px "icomoon";
+        }
+        .cm-index-title {
+            display:flex;
+            justify-content: center;
+            width: 100%;
+            padding-top: 0;
+        }
+        .cm-index-title p {
+            color:#fff;
+            text-align: center;
+        }
+        .menu_title {
+            font: 30px / 1.4em "spoqa-bold";
+        }
+        .container-inner {
+            gap: 0 56px;
+            padding-top: 60px;
+            display: flex;
+            align-items: flex-start;
+        }
+        @media (max-width: 1248px) {
+            .inner, .container-inner {
+                width: calc(100% - 48px);
+                max-width: 100%;
+            }
+        }
+        .container .sidebar {
+            width: 250px;
+        }
+        .container-inner .container-inner>.content {
+            flex: 1 1 auto;
+        }
+        .container .sidebar-list {
+            overflow: hidden;
+            border: 0;
+        }
+        .container-inner .sidebar-list {
+            box-sizing: border-box;
+            border-bottom: 0;
+        }
+        .container .sidebar-list>li.on:first-child>.inside {
+            border-top: 1px solid #3e3b78;
+            border-bottom: 1px solid #3e3b78;
+        }
+        .container .sidebar-list>li.on>.inside {
+            border-color: #3e3b78;
+            box-shadow: 0 0 5px 0 rgba(31, 90, 252, .16);
+        }
+        .container .sidebar-list>li:first-child>.inside {
+            border-top: 1px solid #e0e0e0;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+        .container-inner .sidebar-list>li.on>.inside {
+            border-color: #3e3b78;
+            color: #3e3b78;
+            font: 16px / 1.4em "spoqa-medium";
+        }
+        .container .sidebar-list>li>.inside {
+            height: auto;
+            min-height: 60px;
+            padding: 16.5px 24px;
+            box-sizing: border-box;
+            border: 1px solid #e0e0e0;
+            border-top: 1px solid #fff;
+            display: flex;
+            align-items: center;
+        }
+        .title-frame {
+            display:flex;
+            justify-content: space-between;
+            padding-bottom: 24px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .cm-txt__title--normal {
+            font: 28px / 1.4em "spoqa-bold";
+            font-weight:bold;
+        }
+        .cm-share-list, .cm-share-list-black {
+            overflow: hidden;
+            margin-left: auto;
+        }
+        .cm-share-list>li:first-child, .cm-share-list-black>li:first-child {
+            margin-left: 0;
+        }
+        .cm-share-list>li, .cm-share-list-black>li {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #eee;
+            background-color: #fff;
+        }
+        .cm-share-list>li, .cm-share-list-black>li {
+            float: left;
+            width: 36px;
+            height: 36px;
+            margin-left: 12px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            box-sizing: border-box;
+            line-height: 34px;
+            text-align: center;
+        }
+        .cm-share-list>li [class^=icon-], .cm-share-list-black>li [class^=icon-] {
+            color: #bdbdbd;
+            font-size: 20px;
+        }
+        .cm-share-list>li [class^=icon-], .cm-share-list-black>li [class^=icon-], .cm-share-list>li [class*=" icon-"], .cm-share-list-black>li [class*=" icon-"] {
+            vertical-align: middle;
+            color: #9e9e9e;
+            font-size: 16px;
+        }
+        .inside {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        [class^="icon-"], [class*=" icon-"] {
+            display: inline-block;
+            font-family: 'icomoon' !important;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            vertical-align: middle;
+            font-size: 24px;
+        }
+        .icon-vs_print:before {
+            content: "\eac1";
+        }
+        .board-frame {
+            padding: 56px 0 0;
+            box-sizing: border-box;
+        }
+        .container-inner>.content .board__block {
+            padding-top: 0;
+        }
+        .board__block {
+            width: 100%;
+            padding-top: 32px;
+        }
+        .board__index-box {
+            align-items: flex-end !important;
+            padding-bottom: 24px;
+        }
+        .txt--m6 {
+            font: 22px / 1.4em "spoqa-medium";
+            font-weight:bold;
+        }
+        .list-activity>li {
+            flex: 1 1 calc(33.3333333333% - 10.6666666667px);
+            border-radius: 16px;
+            padding: 32px;
+            box-sizing: border-box;
+        }
+        .list-activity__title {
+            font: 16px / 1.4em "spoqa-medium";
+            font-weight:bold;
+        }
+        .list-activity>li.process {
+            background-color: rgba(31, 90, 252, .04);
+        }
+        .list-activity>li.application {
+            background-color: rgba(255, 197, 0, .08);
+        }
+        .list-activity>li.done {
+            background-color: rgba(255, 175, 255, .08);
+        }
+        .content.page_content_body{width:80%;}
+        .list-activity {
+            display: flex;
+            justify-content: space-between;
+            gap: 0 16px;
+        }
+        select {
+            padding: 0 20px;
+            padding-right: 44px;
+            background-position: right 20px center;
+            min-width: 140px;
+            height: 44px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background: no-repeat right 8px center / 24px 24px;
+            color: #000;
+            font: 14px / 1.75em "spoqa-regular";
+            appearance: none;
+            cursor: pointer;
+        }
+        .board__index-box {
+            display: flex;
+            align-items: flex-end !important;
+            padding-bottom: 24px;
+        }
+        .board__index-term {
+            display: flex;
+            align-items: stretch;
+            gap: 8px;
+            margin-left: auto;
+        }
+        .list-activity>li .inside {
+            display: flex;
+            flex-wrap: wrap;
+            vertical-align: middle;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        .section-box-spacing {
+            padding-top: 60px;
+        }
+        .list-learning .list-come__con--title {
+            display: flex;
+            align-items: center;
+        }
+        .list-come__con--title {
+            padding-bottom: 24px;
+            font: 22px / 1.4em "spoqa-medium";
+            font-weight:bold;
+        }
+        .notice__slider {
+            min-height: 329px;
+            border-radius: 6px;
+            background-color: #fff;
+            box-sizing: border-box;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .board__list--inner.nodata li {
+            display: block;
+            width: 100%;
+            padding: 100px 0;
+        }
+        .board__list--inner.nodata li, .board__list--inner.nodata div, .board__list--inner.nodata p, .board__list--inner.nodata span {
+            color: #616161;
+            font-size: 15px;
+            text-align: center;
+        }
+        .list-learning {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 0 40px;
+        }
+        .list-learning .list-come__con--title .txt-more {
+            margin-left: auto;
+        }
+        .txt-more {
+            color: #9e9e9e;
+            font-size: 16px;
+        }
+        .list-learning>li {
+            flex: 1 1 calc(50% - 20px);
+            width: calc(50% - 20px);
+            margin-bottom:60px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+            $(function(){
+                $('.btn_menu_mobile').click(function(){
+                    $('.gnb_nav').stop().slideToggle('fast');
+                })
+            })
+            $(function(){
+                $('.open-courses').click(function(){
+                    $('.course-list').stop().slideToggle('fast');
+                })
+            })
+            $(function(){
+                $('.open-services').click(function(){
+                    $('.service-list').stop().slideToggle('fast');
+                })
+            })
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+    <header id="header">
+        <div class="container PC">
+            <h1>
+                <a href="index.html"><img src="images/Logo2.svg" alt="캐치코드"></a>
+            </h1>
+            <div class="logo-and-gnb">
+                <ul class="gnb">
+                    <li>
+                        <a href="#">강의</a>
+                        <ul class="lists">
+                            <li><a href="search.html">HTMl</a></li>
+                            <li><a href="search.html">CSS</a></li>
+                            <li><a href="search.html">JAVASCRIPT</a></li>
+                            <li><a href="search.html">PYTHON</a></li>
+                            <li><a href="search.html">PHP</a></li>
+                            <li><a href="search.html">SQL</a></li>
+                            <li><a href="search.html">C</a></li>
+                            <li><a href="search.html">C++</a></li>
+                            <li><a href="search.html">REACT</a></li>
+                            <li><a href="search.html">JQUERY</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">커뮤니티</a>
+                        <ul class="lists">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">질문/답변</a></li>
+                            <li><a href="#">수강평</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form method="post">
+                    <input type="search" placeholder="무엇을 배우고 싶으세요?">
+                    <button class="search-btn"></button>
+                </form>
+                <ul class="service">
+                    <li class="login"><a href="login.html"><img src="images/login.svg" alt="로그인"></a></li>
+                    <li class="register"><a href="join.html"><img src="images/join.svg" alt="회원가입"></a></li>
+                    <li><a href="myclassroom.html"><img src="images/myclass.svg" alt="나의 강의실"></a></li>
+                    <li><a href="#"><img src="images/service.svg" alt="고객센터"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container Tablet">
+            <div class="tablet-header">
+                <h1>
+                    <a href="index.html"><img src="images/Logo2.svg"></a>
+                </h1>
+                <form method="post">
+                    <input type="search" placeholder="무엇을 배우고 싶으세요?">
+                    <button class="search-btn"></button>
+                </form>
+                <img src="images/profile.svg" class="profile-img">
+            </div>
+            </div>
+        <div class="gnb Tablet">
+            <div class="header-gap">
+                <li>
+                    <a href="category.html">강의</a>
+                    <ul class="lists">
+                        <li><a href="search.html">HTMl</a></li>
+                        <li><a href="search.html">CSS</a></li>
+                        <li><a href="search.html">JAVASCRIPT</a></li>
+                        <li><a href="search.html">PYTHON</a></li>
+                        <li><a href="search.html">PHP</a></li>
+                        <li><a href="search.html">SQL</a></li>
+                        <li><a href="search.html">C</a></li>
+                        <li><a href="search.html">C++</a></li>
+                        <li><a href="search.html">REACT</a></li>
+                        <li><a href="search.html">JQUERY</a></li>
+                    </ul>
+                </li>
+                <li><a href="community.html">커뮤니티</a>
+                    <ul class="lists">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">질문/답변</a></li>
+                        <li><a href="#">수강평</a></li>
+                    </ul>
+                </li>
+                <li><a href="myclassroom.html">나의 강의실</a></li>
+                <li><a href="#">고객센터</a></li>
+            </div>
+        </div>
+        <div class="gnb mobile">
+            <span class="btn_menu_mobile" title="메뉴">
+                
+            </span>
+            <h1 class="logo-mobile">
+                <a href="index.html"><img src="images/Logo2.svg"></a>
+            </h1>
+            <div class="hidden btn_search_hidden">
+                <input type="search" placeholder="무엇을 배우고 싶으세요?">
+
+            </div>
+            <button type="button" name="search" class="btn_search_mobile" title="검색">
+                <img src="images/search.svg">
+            </button>
+        </div>
+        <nav class="nav mobile">
+            <ul class="gnb_nav">
+                <div class="header-btn">
+                    <a href="login.html" class="login-mobile">로그인</a>
+                    <a href="join.html" class="login-join">회원가입</a>
+                </div>
+                <li>
+                    <a href="#" class="bold open-courses">
+                        강의<span class="sub_menu_toggle_btn"></span>
+                    </a>
+                    <ul class="course-list">
+                        <li><a href="search.html">HTML</a></li>
+                        <li><a href="search.html">CSS</a></li>
+                        <li><a href="search.html">JAVASCRIPT</a></li>
+                        <li><a href="search.html">PYTHON</a></li>
+                        <li><a href="search.html">PHP</a></li>
+                        <li><a href="search.html">SQL</a></li>
+                        <li><a href="search.html">C</a></li>
+                        <li><a href="search.html">C++</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="bold open-services">
+                        커뮤니티<span class="sub_menu_toggle_btn"></span>
+                    </a>
+                    <ul class="service-list">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">질문/답변</a></li>
+                        <li><a href="#">수강평</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!--header end-->
+
+    <section class="myclass-section">
+        <div class="page1 loading">
+            <div id="container" class="container">
+                <div class="cm-index-box">
+                    <div class="inner">
+                        <div class="cm-index-title">
+                            <p class="menu_title">나의강의실</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-inner">
+                    <div class="sidebar">
+                        <ul class="sidebar-list js-drop menu_list">
+                            <li menu-id="35" class="on">
+                                <a href="javascript:;" class="inside menu_depth2">
+                                    나의 홈<span class="icon-chevron_forward depth" style="display: none;"></span>
+                                </a>
+                            </li>
+                            <li menu-id="47">
+                                <a href="javascript:;" class="inside menu_depth2">
+                                    나의 학습<span class="icon-chevron_forward depth" style="display: none;">…</span>
+                                </a>
+                            </li>
+                            <li menu-id="48">
+                                <a href="javascript:;" class="inside menu_depth2">
+                                    설문<span class="icon-chevron_forward depth" style="display: block;"></span>
+                                </a>
+                            </li>
+                            <li menu-id="49">
+                                <a href="javascript:;" class="inside menu_depth2">
+                                    문의내역<span class="icon-chevron_forward depth" style="display: block;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content page_content_body" style="display: block;">
+                        <div>
+                            <div class="content">
+                                <div class="title-frame">
+                                    <p class="cm-txt__title--normal">나의 홈</p>
+                                </div>
+                                <div class="board-frame">
+                                    <div class="board__block">
+                                        <ul class="board__index-box">
+                                            <li>
+                                                <p class="txt--m6">나의 학습활동</p>
+                                            </li>
+                                            <li class="board__index-term">
+                                                <label for="search_year" style="display:none">
+                                                    <select id="search_year">
+                                                        <option value>전체</option>slot
+                                                    </select>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <ul class="list-activity">
+                                        <li class="process operating_btn" style="cursor: pointer">
+                                            <a href="javascript:;" class="inside">
+                                                <p class="list-activity__title">학습 중</p>
+                                                <div class="list-activity__con">
+                                                    <span class="list-activity__con--num primary-color enrolled_count">0</span>건
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="done complete_btn" style="cursor: pointer">
+                                            <a href="javascript:;" class="inside">
+                                                <p class="list-activity__title">학습완료<span></span></p>
+                                                <div class="list-activity__con">
+                                                    <span class="list-activity__con--num state__green--color complete_count">0</span>건
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="box-activity">
+                                        <div class="section-box-spacing">
+                                            <ul class="list-learning">
+                                                <li>
+                                                    <div class="notice__slider-frame">
+                                                        <div class="list-come__con--title">
+                                                            학습중인 과정
+                                                            <div class="fraction-remote">
+                                                                
+                                                            </div>
+                                                            <a href="javascript:;" class="txt-more operating_btn">더보기</a>
+                                                        </div>
+                                                        <div class="swiper notice__slider enrolled_slider">
+                                                            <div class="enrolled_course_list">
+                                                                <ul class="board__list--inner nodata">
+                                                                    <li>
+                                                                        <div class="nodata__message">
+                                                                            <span class="icon-chatbox_ellipses_sharp" title="nodata"></span>
+                                                                            <p class="none_course">학습중인 과정이 없습니다.</p>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>                                                             
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="notice__slider-frame">
+                                                        <div class="list-come__con--title">
+                                                            학습완료 과정
+                                                            <div class="fraction-remote">
+                                                                
+                                                            </div>
+                                                            <a href="javascript:;" class="txt-more operating_btn">더보기</a>
+                                                        </div>
+                                                        <div class="swiper notice__slider enrolled_slider">
+                                                            <div class="enrolled_course_list">
+                                                                <ul class="board__list--inner nodata">
+                                                                    <li>
+                                                                        <div class="nodata__message">
+                                                                            <span class="icon-chatbox_ellipses_sharp" title="nodata"></span>
+                                                                            <p class="none_course">학습완료 과정이 없습니다.</p>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>                                                             
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="box-activity">
+                                        <div class="section-box-spacing">
+                                            <ul class="list-learning">
+                                                <li>
+                                                    <div class="notice__slider-frame">
+                                                        <div class="list-come__con--title">
+                                                            설문
+                                                            <div class="fraction-remote">
+                                                                
+                                                            </div>
+                                                            <a href="javascript:;" class="txt-more operating_btn">더보기</a>
+                                                        </div>
+                                                        <div class="swiper notice__slider enrolled_slider">
+                                                            <div class="enrolled_course_list">
+                                                                <ul class="board__list--inner nodata">
+                                                                    <li>
+                                                                        <div class="nodata__message">
+                                                                            <span class="icon-chatbox_ellipses_sharp" title="nodata"></span>
+                                                                            <p class="none_course">-</p>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>                                                             
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="notice__slider-frame">
+                                                        <div class="list-come__con--title">
+                                                            문의하기
+                                                            <div class="fraction-remote">
+                                                                
+                                                            </div>
+                                                            <a href="javascript:;" class="txt-more operating_btn">더보기</a>
+                                                        </div>
+                                                        <div class="swiper notice__slider enrolled_slider">
+                                                            <div class="enrolled_course_list">
+                                                                <ul class="board__list--inner nodata">
+                                                                    <li>
+                                                                        <div class="nodata__message">
+                                                                            <span class="icon-chatbox_ellipses_sharp" title="nodata"></span>
+                                                                            <p class="none_course">등록된 문의글이 없습니다.</p>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>                                                             
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <footer class="footer">
+        <p>개인정보처리방침
+            이용약관
+            (주)캐치코드 사업자 정보 
+        <p>대표자: 엄우진 | 사업자번호: 999-00-00000 사업자 정보 확인
+            통신판매업: 20XX-서울구로-9999 | 개인정보보호책임자: 조해용</p>
+        <p>이메일: info@catchcode.com | 전화번호: 070-1234-9999 | 주소: 서울특별시 구로구 경인로10번길 20 3동 5층</p>
+        <p>©CATCHCODEKR. ALL RIGHTS RESERVED</p>
+    </footer>
+    <script src="js/main.js"></script> 
+</body>
+</html>

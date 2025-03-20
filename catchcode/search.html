@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색결과</title>
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .flex{display:flex;}
+        .sidebar{
+            width:25%;
+            min-width:155px;
+            box-sizing: border-box;
+            /*border: 1px solid #e0e0e0;*/
+        }
+        .search-page h2 {padding:10px 0;}
+        .sidebar .flex{flex-direction: column;}
+        .search-option{margin-bottom:10px;}
+        .search-results{
+            width:75%;
+            box-sizing: border-box;
+            /*border: 1px solid #e0e0e0;*/
+        }
+        .search-result-cards{
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .result-card{
+            width:32%;
+            height:410px;
+            border:1px solid #ccc;
+            border-radius:10px;
+            margin-bottom:40px;
+            display: -webkit-box;
+            display:flex;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            cursor:pointer;
+        }
+        .preview-img{
+            width:95%; 
+            height:180px;
+            background:#eee;
+            margin:10px auto;
+            border-radius:10px;
+        }
+        .preview-text{padding:10px;}
+        .em09{font-size:0.9em;margin-top:10px;height:115px; overflow:hidden;}
+        .search-page h2{margin-bottom:30px;}
+        .search-subject input{margin-right:5px;}
+        .root{text-align:center;}
+        .root a{display:inline-block;}
+        h3{font-size:18.72px;}
+
+        .search-subject{display:none;}
+        .search-subject{
+            border: .0625rem solid #e1e1e8;
+            border-top: none;
+            width: 80%;
+            padding: 3%;
+        }
+        .search-subject li{padding:5px;}
+        .root a{
+            width:32px; 
+            height:32px; 
+            border: 1px solid #e1e1e8;
+            border-radius:5px;
+            margin:3px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .root a:nth-child(2){
+            color:white;
+            background:#3e3b78;
+        }
+        .search-filter{
+            background:none;
+            border:none;
+            width:25px;
+            height:25px;
+            padding:0;
+            position: absolute;
+            right: 5px;
+        }
+        .search-filter img{width:25px;height:25px;}
+        .search-results h2{
+            display: flex;
+            position: relative;
+            align-items: center;
+        }
+        .open-menu{display:block;}
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container PC">
+            <h1>
+                <a href="index.html"><img src="images/Logo2.svg" alt="캐치코드"></a>
+            </h1>
+            <div class="logo-and-gnb">
+                <ul class="gnb">
+                    <li>
+                        <a href="search.html">강의</a>
+                        <ul class="lists">
+                            <li><a href="search.html">HTML</a></li>
+                            <li><a href="search.html">CSS</a></li>
+                            <li><a href="search.html">JAVASCRIPT</a></li>
+                            <li><a href="search.html">PYTHON</a></li>
+                            <li><a href="search.html">PHP</a></li>
+                            <li><a href="search.html">SQL</a></li>
+                            <li><a href="search.html">C</a></li>
+                            <li><a href="search.html">C++</a></li>
+                            <li><a href="search.html">REACT</a></li>
+                            <li><a href="search.html">JQUERY</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">커뮤니티</a>
+                        <ul class="lists">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">질문/답변</a></li>
+                            <li><a href="#">수강평</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form method="post">
+                    <input type="search" placeholder="무엇을 배우고 싶으세요?">
+                    <button class="search-btn"></button>
+                </form>
+                <ul class="service">
+                    <li class="login"><a href="login.html"><img src="images/login.svg" alt="로그인"></a></li>
+                    <li class="register"><a href="join.html"><img src="images/join.svg" alt="회원가입"></a></li>
+                    <li><a href="myclassroom.html"><img src="images/myclass.svg" alt="나의 강의실"></a></li>
+                    <li><a href="#"><img src="images/service.svg" alt="고객센터"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container Tablet">
+            <div class="tablet-header">
+                <h1>
+                    <a href="index.html"><img src="images/Logo2.svg"></a>
+                </h1>
+                <form method="post">
+                    <input type="search" placeholder="무엇을 배우고 싶으세요?">
+                    <button class="search-btn"></button>
+                </form>
+                <a href="login.html"><img src="images/profile.svg" class="profile-img"></a>
+            </div>
+            </div>
+        <div class="gnb Tablet">
+            <div class="header-gap">
+                <li>
+                    <a href="search.html">강의</a>
+                    <ul class="lists">
+                        <li><a href="search.html">HTML</a></li>
+                        <li><a href="search.html">CSS</a></li>
+                        <li><a href="search.html">JAVASCRIPT</a></li>
+                        <li><a href="search.html">PYTHON</a></li>
+                        <li><a href="search.html">PHP</a></li>
+                        <li><a href="search.html">SQL</a></li>
+                        <li><a href="search.html">C</a></li>
+                        <li><a href="search.html">C++</a></li>
+                        <li><a href="search.html">REACT</a></li>
+                        <li><a href="search.html">JQUERY</a></li>
+                    </ul>
+                </li>
+                <li><a href="community.html">커뮤니티</a>
+                    <ul class="lists">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">질문/답변</a></li>
+                        <li><a href="#">수강평</a></li>
+                    </ul>
+                </li>
+                <li><a href="myclassroom.html">나의 강의실</a></li>
+                <li><a href="#">고객센터</a></li>
+            </div>
+        </div>
+        <div class="gnb mobile">
+            <span class="btn_menu_mobile" title="메뉴">
+                
+            </span>
+            <h1 class="logo-mobile">
+                <a href="index.html"><img src="images/Logo2.svg"></a>
+            </h1>
+            <div class="hidden btn_search_hidden">
+                <input type="search" placeholder="무엇을 배우고 싶으세요?">
+
+            </div>
+            <button type="button" name="search" class="btn_search_mobile" title="검색">
+                <img src="images/search.svg">
+            </button>
+        </div>
+        <nav class="nav mobile">
+            <ul class="gnb_nav">
+                <div class="header-btn">
+                    <a href="login.html" class="login-mobile">로그인</a>
+                    <a href="join.html" class="login-join">회원가입</a>
+                </div>
+                <li>
+                    <a href="#" class="bold open-courses">
+                        강의<span class="sub_menu_toggle_btn"></span>
+                    </a>
+                    <ul class="course-list">
+                        <li><a href="search.html">HTML</a></li>
+                        <li><a href="search.html">CSS</a></li>
+                        <li><a href="search.html">JAVASCRIPT</a></li>
+                        <li><a href="search.html">PYTHON</a></li>
+                        <li><a href="search.html">PHP</a></li>
+                        <li><a href="search.html">SQL</a></li>
+                        <li><a href="search.html">C</a></li>
+                        <li><a href="search.html">C++</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="bold open-services">
+                        커뮤니티<span class="sub_menu_toggle_btn"></span>
+                    </a>
+                    <ul class="service-list">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">질문/답변</a></li>
+                        <li><a href="#">수강평</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--header end-->
+
+    <section class="search-page">
+        <div class="margin"></div>
+        <div class="row">
+            <div class="flex">
+                <div class="sidebar">
+                    <h2>필터링 기준</h2>
+                    <div class="flex">
+                        <div class="search-option subject">
+                            <button><h3>과목</h3><img src="images/down_btn.svg" alt="arrow" class="subject-arrow"></button>
+                            <ul class="search-subject subject">
+                                <li><input id="HTML" class="idk" type="checkbox" value="HTML">HTML</li>
+                                <li><input id="HTML" class="idk" type="checkbox" value="HTML">CSS</li>
+                                <li><input id="HTML" class="idk" type="checkbox" value="HTML">JAVASCRIPT</li>
+                                <li><input id="HTML" class="idk" type="checkbox" value="HTML">PYTHON</li>
+                                <li><input id="HTML" class="idk" type="checkbox" value="HTML">PHP</li>
+                                <li><input id="HTML" class="idk" type="checkbox" value="HTML">SQL</li>
+                                <li><input id="HTML" class="idk" type="checkbox" value="HTML">C</li>
+                                <li><input id="HTML" class="idk" type="checkbox" value="HTML">C++</li>
+                                <li><input id="HTML" class="idk" type="checkbox" value="HTML">REACT</li>
+                                <li><input id="HTML" class="idk" type="checkbox" value="HTML">JQUERY</li>
+                            </ul>
+                        </div>
+                        <div class="search-option difficulty">
+                            <button><h3>학습 난이도</h3><img src="images/down_btn.svg" alt="arrow" class="difficulty-arrow"></button>
+                            <ul class="search-subject difficulty">
+                                <li class="difficulty-list"><input id="HTML" class="idk" type="checkbox" value="HTML">쉬움</li>
+                                <li class="difficulty-list"><input id="HTML" class="idk" type="checkbox" value="HTML">보통</li>
+                                <li class="difficulty-list"><input id="HTML" class="idk" type="checkbox" value="HTML">어려움</li>
+                            </ul>
+                        </div>
+                        <div class="search-option free-or-not">
+                            <button><h3>강의 가격</h3><img src="images/down_btn.svg" alt="arrow" class="price-arrow"></button>
+                            <ul class="search-subject free-or-not">
+                                <li class="difficulty-list"><input id="HTML" class="idk" type="checkbox" value="HTML">무료</li>
+                                <li class="difficulty-list"><input id="HTML" class="idk" type="checkbox" value="HTML">유료</li>
+                            </ul>
+                        </div>
+                        <div class="search-option"></div>
+                    </div>
+                </div>
+                <div class="search-results">
+                    <div class="search-results-header-mobile">
+                        <h2>"코딩"에 대한 검색 결과<button class="search-filter"><img src="images/search-filter.svg"></button></h2>
+                        <div class="search-filter-hidden">
+                            <div class="search-option subject mobile">
+                                <button><h3>과목</h3><img src="images/down_btn.svg" alt="arrow" class="subject-arrow"></button>
+                                <ul class="search-subject subject">
+                                    <li><input id="HTML" class="idk" type="checkbox" value="HTML">HTML</li>
+                                    <li><input id="HTML" class="idk" type="checkbox" value="HTML">CSS</li>
+                                    <li><input id="HTML" class="idk" type="checkbox" value="HTML">JAVASCRIPT</li>
+                                    <li><input id="HTML" class="idk" type="checkbox" value="HTML">PYTHON</li>
+                                    <li><input id="HTML" class="idk" type="checkbox" value="HTML">PHP</li>
+                                    <li><input id="HTML" class="idk" type="checkbox" value="HTML">SQL</li>
+                                    <li><input id="HTML" class="idk" type="checkbox" value="HTML">C</li>
+                                    <li><input id="HTML" class="idk" type="checkbox" value="HTML">C++</li>
+                                    <li><input id="HTML" class="idk" type="checkbox" value="HTML">REACT</li>
+                                    <li><input id="HTML" class="idk" type="checkbox" value="HTML">JQUERY</li>
+                                </ul>
+                            </div>
+                            <div class="search-option difficulty mobile">
+                                <button><h3>학습 난이도</h3><img src="images/down_btn.svg" alt="arrow" class="difficulty-arrow"></button>
+                                <ul class="search-subject difficulty">
+                                    <li class="difficulty-list"><input id="HTML" class="idk" type="checkbox" value="HTML">쉬움</li>
+                                    <li class="difficulty-list"><input id="HTML" class="idk" type="checkbox" value="HTML">보통</li>
+                                    <li class="difficulty-list"><input id="HTML" class="idk" type="checkbox" value="HTML">어려움</li>
+                                </ul>
+                            </div>
+                            <div class="search-option free-or-not mobile">
+                                <button><h3>강의 가격</h3><img src="images/down_btn.svg" alt="arrow" class="price-arrow"></button>
+                                <ul class="search-subject free-or-not">
+                                    <li class="difficulty-list"><input id="HTML" class="idk" type="checkbox" value="HTML">무료</li>
+                                    <li class="difficulty-list"><input id="HTML" class="idk" type="checkbox" value="HTML">유료</li>
+                                </ul>
+                            </div>
+                            <div class="search-option"></div>
+                        </div>
+                    </div>
+                    <div class="search-results-mobile">
+                        <ul class="search-result-cards">
+                            <li class="result-card">
+                                <a href="course-intro.html">
+                                    <div class="preview-img"><img src="images/search00.png"></div>
+                                    <div class="preview-text">
+                                    <h4>프로그래밍 시작하기 : 웹 입문</h4>
+                                    <p>인프런</p>
+                                    <p class="em09">프로그래밍을 시작하는 분들을 위한 웹 개발 입문 강의입니다.</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="result-card">
+                                <a href="course-intro.html">
+                                    <div class="preview-img"><img src="images/course00.png"></div>
+                                    <div class="preview-text">
+                                    <h4>모든 개발자를 위한 HTTP 웹 기본 지식</h4>
+                                    <p>김영한</p>
+                                    <p class="em09">실무에 꼭 필요한 HTTP 핵심 기능과 올바른 HTTP API 설계 방법을 학습합니다.</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="result-card">
+                                <a href="course-intro.html">
+                                    <div class="preview-img"><img src="images/search01.png"></div>
+                                    <div class="preview-text">
+                                    <h4>모두를 위한 코딩: C 및 C++ 특화 과정</h4>
+                                    <p>참다래</p>
+                                    <p class="em09">C와 C++로 복잡한 문제를 코딩, 디버깅 및 해결하는 방법을 배워 컴퓨터 프로그래밍에 대한 깊은 이해를 얻으세요.</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="result-card">
+                                <a href="course-intro.html">
+                                    <div class="preview-img"><img src="images/search02.png"></div>
+                                    <div class="preview-text">
+                                    <h4>PHP로 웹 애플리케이션 구축</h4>
+                                    <p>찰떡코딩</p>
+                                    <p class="em09">PHP의 기본 구문과 데이터 구조, 변수, 논리, 반복, 배열, 오류 처리, 수퍼 전역 변수 등의 요소에 대해 알아보세요.</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="result-card">
+                                <a href="course-intro.html">
+                                    <div class="preview-img"><img src="images/search03.png"></div>
+                                    <div class="preview-text">
+                                    <h4>React 배우기</h4>
+                                    <p>Bob</p>
+                                    <p class="em09">React를 활용하여 다양한 실제 프로젝트를 구축하세요.</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="result-card">
+                                <a href="course-intro.html">
+                                    <div class="preview-img"><img src="images/search04.png"></div>
+                                    <div class="preview-text">
+                                    <h4>실전! SQL 입문</h4>
+                                    <p>신동현</p>
+                                    <p class="em09">SQL의 특징을 이해하고, 필요한 데이터를 스스로 추출할 수 있는 능력을 키웁니다.</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="root">
+                            <a href="#" id="before_btn">&lt;</a>
+                            <a href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#" id="next_btn">&gt;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <p>개인정보처리방침
+            이용약관
+            (주)캐치코드 사업자 정보 
+        <p>대표자: 엄우진 | 사업자번호: 999-00-00000 사업자 정보 확인
+            통신판매업: 20XX-서울구로-9999 | 개인정보보호책임자: 조해용</p>
+        <p>이메일: info@catchcode.com | 전화번호: 070-1234-9999 | 주소: 서울특별시 구로구 경인로10번길 20 3동 5층</p>
+        <p>©CATCHCODEKR. ALL RIGHTS RESERVED</p>
+    </footer>
+    <script>
+        const subjectBtn = document.querySelector('.search-option.subject button');
+        const subjectList = document.querySelector('.search-subject.subject');
+        const subjectArrow = document.querySelector('.subject-arrow')
+        subjectBtn.addEventListener('click', () => {
+            subjectList.classList.toggle('open-menu');
+            subjectArrow.classList.toggle('active');
+        });
+
+        const difficultyBtn = document.querySelector('.search-option.difficulty button');
+        const difficultyList = document.querySelector('.search-subject.difficulty');
+        difficultyBtn.addEventListener('click', () => {
+            difficultyList.classList.toggle('open-menu');
+        });
+
+        const priceBtn = document.querySelector('.search-option.free-or-not button');
+        const priceList = document.querySelector('.search-subject.free-or-not');
+        priceBtn.addEventListener('click', () => {
+            priceList.classList.toggle('open-menu');
+        });
+
+        const subjectBtn2 = document.querySelector('.search-option.subject.mobile button');
+        const subjectList2 = document.querySelector('.search-option.subject.mobile .search-subject.subject');
+        const subjectArrow2 = document.querySelector('.subject-arrow')
+        subjectBtn2.addEventListener('click', () => {
+            subjectList2.classList.toggle('open-menu');
+            subjectArrow2.classList.toggle('active');
+        });
+
+        const difficultyBtn2 = document.querySelector('.search-option.difficulty.mobile button');
+        const difficultyList2 = document.querySelector('.search-option.difficulty.mobile .search-subject.difficulty');
+        difficultyBtn2.addEventListener('click', () => {
+            difficultyList2.classList.toggle('open-menu');
+        });
+
+        const priceBtn2 = document.querySelector('.search-option.free-or-not.mobile button');
+        const priceList2 = document.querySelector('.search-option.free-or-not.mobile .search-subject.free-or-not');
+        priceBtn2.addEventListener('click', () => {
+            priceList2.classList.toggle('open-menu');
+        });
+
+        const btnSearchFilter = document.querySelector('.search-filter img');
+        const searchFilterHidden = document.querySelector('.search-filter-hidden')
+        btnSearchFilter.addEventListener('click', () => {
+        searchFilterHidden.classList.toggle('active');
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/main.js"></script> 
+</body>
+</html>
