@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로젝트 소개 - 캐치코드</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <style>
         body {
             font-family: "Noto sans KR", Arial, sans-serif;
             line-height: 1.6;
         }
-        h2 {font-size: 40px;}
+        h2 {font-size: 40px; color: #1f1d42;}
+        #about_catchcode .first_desc h3 {color: #0f1d7f;}
         #section1 {
             margin-top:80px;
         }
@@ -57,11 +58,11 @@
             border-radius: 10px;
             background: #333;
         }
-        .color_white{
+        .color_box{
             width: 100px;
             height: 100px;
             border-radius: 10px;
-            background: #fff;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -70,14 +71,14 @@
     <section id="third_project" data-color="#333" style="display: flex; align-items: center; justify-content: space-evenly; height:100vh;background:url(images/catchcode_bg15.png); background-size: cover;">
         <div class="flex" style="flex-direction: column; width: 90%; gap: 8vh;">
             <div class="project2" style="width: 90%;display: flex;gap: 3%;">
-                <img src="mobilefixed01.PNG" alt="캐치코드 모바일">
+                <img src="images/mobilefixed01.PNG" alt="캐치코드 모바일">
                 <img src="images/catchcode-tablet.png" alt="캐치코드 태블릿">
                 <img src="images/CatchCode_PC03.png" alt="캐치코드 데스크탑">
             </div>
             <div class="flex" style="width: 90%; flex-direction: row; justify-content: space-between;">
                 <div class="column-left" style="width:45%;">
                     <a href="#" class="thumb-box" target="_blank" data-img>
-                        <img src="Logo_CatchCode.svg" alt="캐치코드 로고">
+                        <img src="images/Logo_CatchCode.svg" alt="캐치코드 로고">
                     </a>
                 </div>
                 <div class="column-right" style="width:45%;">
@@ -92,7 +93,7 @@
                         </div>
                         <div class="desc_buttons flex" style="gap: 60px; flex-wrap: nowrap;">
                             <h3 class="project-tit">CatchCode</h3>
-                            <a href="https://wjurm.github.io/seoulspot/" class="link-page" target="_blank" data-hover>Go Site</a>
+                            <a href="catchcode/index.html" class="link-page" target="_blank" data-hover>Go Site</a>
                         </div>
                         <p class="desc"> 반응형 웹페이지로, 온라인 코딩 학습 사이트입니다. 
                             <br>주 컨텐츠는 코딩을 주제로 한 온라인 강의이며, 학습자 간의 질의응답이 가능합니다.</p>
@@ -101,93 +102,160 @@
             </div>
         </div>
     </section>
-    <section id="section1">
+    <section id="about_catchcode" style="height:auto; margin-bottom:90px;">
         <div class="section-inner">
-            <div class="flex" style="justify-content: space-between; align-items: flex-start; margin-bottom: 90px;">
-                <div style="width:45%;">
-                    <h2>Concept</h2>
-                    <hr style="margin-bottom:20px;">
-                    <h3>심미성을 가미한 온라인 코딩 학습 사이트</h3>
-                    <p>   
-                        온라인 코딩 강의 사이트들을 둘러보고, 대부분의 온라인 코딩 강의 사이트들의 메인페이지 레이아웃이 너무나 단조롭고 가독성이 떨어짐을 느꼈습니다.
-                        한 줄에 4~6개의 강의가 나열되고 그것이 반복될 뿐인 레이아웃들은 저에게 지루한 느낌 또한 주었습니다.
-                    </p>
-                    <p>
-                        언젠가 강의 플랫폼의 웹페이지를 만들어보겠다는 저의 목표를 이룸과 동시에
-                        메인 페이지가 단조로운 레이아웃에서 조금이나마 벗어난 웹사이트를 제작하는 것을 목표로 하였습니다.
-                    </p>
-                    <p>
-                        학습을 위한 다양한 방법을 시도해보는 것을 지향하기 때문에, 이에 도움이 될만한 아이디어가 떠오르면 그것을 돕기 위한 추가적인 업데이트도 이루어질 수 있습니다.
-                    </p>
-                </div>
+            <div class="flex first_desc" style="justify-content: space-between; align-items: flex-start; margin-bottom: 90px;">
                 <div style="width:45%;">
                     <div>
-                        <h2>Naming</h2>
+                        <h2>About CatchCode</h2>
                         <hr style="margin-bottom:20px;">
-                        <h3>Catch + Code</h3>
+                        <p>캐치코드는 온라인 코딩 학습 사이트입니다. 주 컨텐츠는 코딩을 주제로 한 온라인 강의이며, 이후 더 다양한 주제로 확장될 수 있습니다. 또한 현재 제공되는 서비스 외 학습에 도움이 되는 서비스가 준비되면 언제든지 적용할 준비가 되어있는 사이트입니다.</p>
+                        <h3>Naming</h3>
+                        <h4>"Catch + Code"</h4>
                         <p>
                             온라인 코딩 학습 사이트이기 때문에 중요한 것은 코드이고, 중요한 코드를 캐치해내자는 의미를 담음과 동시에 세상의 다양한 암호(code)들을 포착(catch)해 풀어나가자는 의미 또한 담았습니다.
                         </p>
                     </div>
                     <div>
-                        <h2>Symbol</h2>
-                        <hr>
+                        <h3>Slogan</h3>
+                        <h4>"세상의 암호들을 붙잡다"</h4>
                         <p>
-                            캐치코드의 심볼은 렌즈와 조준선 모양이 들어가 중요한 내용들을 꼭 포착하자는 의지를 나타냅니다.
+                            캐치코드의 의미를 드러낸 슬로건입니다. 세상의 다양한 진리와 궁금증들을 풀어나가자는 의미가 담겨있습니다.
                         </p>
                     </div>
+                    <div>
+                        <h3>Symbol</h3>
+                        <p>
+                            캐치코드의 심볼은 렌즈와 조준선 모양이 들어가 중요한 내용들을 꼭 포착하자는 의지를 나타냅니다.
+                            <div class="flex" style="gap:5%;">
+                                <img src="images/symbol_desc_01.png" alt="캐치코드 심볼" style="width:15%;">
+                                <img src="images/symbol_desc_02.png" alt="심볼 모티브 1 - 카메라 렌즈" style="width:15%;">
+                                <img src="images/symbol_desc_03.png" alt="심볼 모티브 2 - 조준선" style="width:30%;">
+                            </div>
+                        </p>
+                    </div>
+                </div> 
+                <div style="width:45%;">
+                    <div style="margin-bottom:30px;">
+                        <h3>Color</h3>
+                        <p>
+                            캐치코드의 색상은 디지털 하면 떠오르는 색상인 녹색과 파란색과 관련된 색상들 중 사이트와 어울리는 색상들을 선정하였습니다. 
+                            어두운 Indigo, white를 기본으로 하며 어두운 Blue와 Teal을 보조적으로 사용합니다.
+                        </p>
+                        <div class="project3_info_color flex" style="padding-top:0;">
+                            <div class="color_box" style="background:#1f1d42"></div>
+                            <div class="color_box" style="background:#24224e"></div>
+                            <div class="color_box" style="background:#3e3b78"></div>
+                            <div class="color_box" style="background:#0f1d7f"></div>
+                            <div class="color_box" style="background:#153954"></div>
+                            <div class="color_box" style="background:#00a1a4"></div>
+                            <div class="color_box" style="background:#333333"></div>
+                            <div class="color_box" style="background:#cccccc"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Logo</h3>
+                        <p>
+                            <img src="images/Logo_CatchCode.svg" alt="캐치코드 로고" style="width:50%;">
+                            <img src="images/Logo_CatchCode_White.svg" alt="캐치코드 흰색 로고" style="background:black;width:50%;">
+                        </p>
+                        <p style="padding-top:0;"> 
+                            어두운 계열 색상을 배경 색상으로 지정해야 할 때, 로고의 색상은 흰색으로 합니다.
+                            밝은 계열의 색상이 배경 색상일 경우에는 흰색을 사용하지 않습니다.
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="flex" style="justify-content: space-between; align-items: flex-start; margin-bottom: 90px;">
+                <div style="width:45%;">
+                    <h2>Concept</h2>
+                    <hr style="margin-bottom:20px;">
+                    <h3>레이아웃을 다양하게</h3>
+                    <p>   
+                        온라인 코딩 강의 사이트들을 둘러보고, 대부분의 온라인 코딩 강의 사이트들의 메인페이지 레이아웃이 너무나 단조롭고 가독성이 떨어짐을 느꼈습니다.
+                        한 줄에 4~6개의 강의가 나열되고 그것이 반복될 뿐인 레이아웃들은 저에게 지루한 느낌 또한 주었습니다.
+                        <h4>강의사이트 대부분의 레이아웃</h4>
+                        <img src="images/layout_to_fix.png" alt="반복되는 레이아웃">
+                    </p>
+                    <p>
+                        언젠가 강의 플랫폼의 웹페이지를 만들어보겠다는 저의 목표를 이룸과 동시에
+                        메인 페이지가 단조로운 레이아웃에서 조금이나마 벗어난 웹사이트를 제작하는 것을 목표로 하였습니다.
+                    </p>
+                    <p style="display:none;">
+                        학습을 위한 다양한 방법을 시도해보는 것을 지향하기 때문에, 이에 도움이 될만한 아이디어가 떠오르면 그것을 돕기 위한 추가적인 업데이트도 이루어질 수 있습니다.
+                    </p>
+                </div>
+                <div style="width:45%;">
+                    <h4 style="margin-top:20px;">캐치코드의 레이아웃</h4>
+                    <img src="images/layout_of_catchcode.PNG" alt="캐치코드 메인페이지 레이아웃">
+                    
                 </div> 
             </div>
             <div class="flex" style="justify-content: space-between; align-items: flex-start;">
                 <div style="width:45%;">
-                    <h2>슬로건</h2>
-                    <hr>
-                    <p>   
-                        세상의 암호들을 붙잡다
-                    </p>
-                    <p>
-                        <img src="images/P_of_SeoulSpot.svg" alt="서울 로고 텍스트" style="max-width:80%; max-height:85px; margin-bottom:10px;">
-                        "SPOT"의 P의 일부는 삼각형처럼 변형하여 위치 아이콘과 살짝 닮게 하여 "SPOT(장소, 지점, 관광지)"의 이미지를 전달합니다.
-                    </p>
+                    <h2>Details</h2>
+                    <hr style="margin-bottom:20px;">
                 </div>
-                <div style="width:45%;">
-                    <h2>Typography</h2>
-                    <hr>
-                    <p>
-                        
+                <div style="width:100%; margin-bottom: 90px;">
+                    <h4>메인페이지</h4>
+                    <p>   
+                        메인 페이지의 첫 구성은 배너, 공지사항, 검색창, 인기 주제 섹션으로 되어있습니다.
                     </p>
+                    <p>
+                        우선 이벤트 및 인기 강의를 띄워 사이트 이용자들의 주목을 이끌어내기 위하여 배너 섹션을 맨 처음에 위치시켰고, 공지사항이 눈에 잘 띄게 하기 위해 그 바로 밑에 공지사항 섹션을 배치했습니다.
+                    </p>
+                    <p>
+                        <img src="images/catchcode_01.png" alt="캐치코드 메인페이지 최상단">
+                    </p>
+                    <p>
+                        검색창 및 인기 주제 섹션을 통해 원하는 강의를 바로 찾아볼 수 있습니다. 인기 주제 아이콘을 누르면 페이지가 넘어가 해당 주제의 강의 목록이 뜹니다.
+                    </p>
+                    <h4>배너 섹션</h4>
+                    <p>슬라이드 번호가 표시되며, 화살표 버튼을 통해 다음 슬라이드로 이동할 수 있습니다.
+                        <div class="flex">
+                            <img src="images/catchcode_banner_function02.PNG" alt="캐치코드 배너">
+                            <img src="images/catchcode_banner_function.PNG" alt="캐치코드 배너 코드">
+                        </div>
+                    </p>
+                    <h4>공지사항 섹션</h4>
+                    <p>
+                        Swiper 기능이 적용되었으며, 공지사항 목록이 세로로 넘어갑니다. 사용자가 위 아래 버튼으로 조작할 수 있습니다.
+                        <div class="flex">
+                            <img src="images/notice_function01.png" alt="공지사항 기능 설명1">
+                            <img src="images/notice_function02.png" alt="공지사항 기능 설명2">
+                        </div>
+                    </p>
+                    <h4>강의 후기 섹션</h4>
+                    <p>
+                        Swiper 기능으로 다음 리뷰 화면으로 넘길 수 있습니다. 화살표 아이콘으로 조작 가능합니다.
+                        <div class="flex" style="align-items: flex-end;">
+                            <img src="images/review_section_01.PNG" alt="리뷰 기능 설명1" style="height:260px;">
+                            <img src="images/review_section_02.PNG" alt="리뷰 기능 설명2">
+                        </div>
+                    </p>
+                    <h4>FAQ 섹션</h4>
+                    <p>
+                        질문 목록을 클릭하면 답변이 나타나고, 다시 누르면 숨겨지는 기능을 넣었습니다.<br>
+                        추가로, 열리고 닫힌 상태에 따라 화살표 아이콘이 같이 움직입니다.
+                    </p>
+                        <div class="flex">
+                            <img src="images/FAQ01.PNG" alt="FAQ 기능 설명1" style="height:280px;">
+                            <img src="images/FAQ02.PNG" alt="FAQ 기능 설명2" style="height:280px;">
+                        </div>
                 </div> 
             </div>
-            <h2></h2>
-            <p>
-                
-            </p>
-
-   
-
-   
-
-    
-
-    <p>
-    소개글
-    첫 번째 섹션에는 서울에 대한 간략한 소개글과 다른 섹션으로 이동하는 버튼들이 배치되어있습니다.
-    1. 반드시 방문해야 할 관광장소
-    2. 해당 관광 장소와 관련된 이벤트
-    3. 서울을 크게 5개의 구역으로 나누어 소개
-    4. 서울에서 먹을 수 있는 음식 소개
-    5. 기타 서울의 축제, 전시, 이벤트 소개
-    6. 여행할 때 알면 유용한 정보들
-    </p>
-    <p>
-        Footer 
-        - 서울 관광 앱 설치 링크가 제공되며, 문의 메일 주소 등의 정보가 제공됩니다.
-        - 서울을 상징하는 나무인 은행나무의 잎 그림, 서울을 상징하는 새인 까치의 그림이 있습니다.
-        </p>
-        
-    </div>
+            <div style="justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h2 style="text-align:center; margin-bottom:20px;">Mockup</h2>
+                </div>
+                <div style="width:100%;">
+                    <div class="flex" style="position: relative; width:80%;margin:0 auto; height:70%;">
+                        <img src="images/CatchCode_devices.png" alt="캐치코드 모바일">
+                    </div>
+                </div>
+            </div>
+        </div>
 </section>
-
-
 </body>
 </html>
