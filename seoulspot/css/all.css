@@ -17,7 +17,7 @@ html, body {width:100%;height:100%;}
 #gn1 {position:fixed;top:3.5%;right:2%;text-align:right;z-index:2;overflow:hidden;font-size:12px;overflow:visible;}
 #gn1 li {float:left;min-width:35px;}
 #gn1 li a, #gn1 li button {display:block;text-align:center;color:#fff;font-weight:500;font-size:.75em;height:auto;padding:0;margin:0 auto;background:transparent;border:0;}
-#gn1 li a:before, #gn1 li.n3 .b1:before {content:"";display:block;width:18px;height:17px;background:url(images/sprite.png) no-repeat;margin:0 auto 8px;}
+#gn1 li a:before, #gn1 li.n3 .b1:before {content:"";display:block;width:18px;height:17px;background:url(../images/sprite.png) no-repeat;margin:0 auto 8px;}
 #gn1 li.n1 a:before {background-position:0 0}
 #gn1 li.n2 a:before {background-position:-20px 0}
 #gn1 li.n3 .b1:before {background-position:-40px 0}
@@ -89,7 +89,7 @@ html, body {width:100%;height:100%;}
 [class*="mainbody"] .ht1 .sst1:after {right:0}
 [class*="mainbody"] .ht1 .sst2 {display:block;font-family: 'Gmarket Sans TTF', 'Gmarket Sans', 'Noto Sans KR','본고딕',NotoSans,'Noto Sans CJK KR', 'Malgun Gothic', serif;font-size:1.25em;font-weight:400;}
 [class*="mainbody"] .sec {display:inline;}
-[class*="mainbody"] .b1.more {display:inline-block;vertical-align:top;width:19px;height:19px;background:url(images/sprite.png) no-repeat -26px -19px;margin-top:30px}
+[class*="mainbody"] .b1.more {display:inline-block;vertical-align:top;width:19px;height:19px;background:url(../images/sprite.png) no-repeat -26px -19px;margin-top:30px}
 [class*="mainbody"] .view1text {letter-spacing:-.025em;}
 [class*="mainbody"] .view1text .ct1 {font-family: 'JejuMyeongjo', 'Jeju Myeongjo', serif;font-size:1.5em;line-height:1.2;margin-bottom:2.7%;letter-spacing:-.05em}
 [class*="mainbody"] .view1text .ct1 .ct2 {font-size:.75em;}
@@ -156,7 +156,7 @@ html, body {width:100%;height:100%;}
 
 /* 본문상단으로 이동 */
 #gotop1 {position:fixed;bottom:2%;right:3%;border:1px solid #fff;width:35px;height:35px;box-sizing:border-box;font-size:.75em;color:#fff;text-align:center;font-weight:500;z-index:2;transition:all .4s ease;}
-#gotop1:before {content:"";display:block;width:13px;height:14px;background:url(images/sprite.png) no-repeat -56px 0;margin:27% auto 0;background-size:89px auto;}
+#gotop1:before {content:"";display:block;width:13px;height:14px;background:url(../images/sprite.png) no-repeat -56px 0;margin:27% auto 0;background-size:89px auto;}
 #gotop1 .t1 {display:none;}
 #gotop1:hover {background:rgba(0,0,0,.5);}
 @media all and (min-width:768px){
@@ -172,25 +172,25 @@ html, body {width:100%;height:100%;}
 }
 
 /* 섹션별 배경 */
-#mainbody1 {background-image:url(images/bg01.jpg)}
-#mainbody2 {background-image:url(images/bg03.jpg)}
+#mainbody1 {background-image:url(../images/bg01.jpg)}
+#mainbody2 {background-image:url(../images/bg03.jpg)}
 #mainbody2 .container{background-color:rgba(0,0,0,0.8);}
-#mainbody3 {background-image:url(images/bg-md02.png);}
+#mainbody3 {background-image:url(../images/bg-md02.png);}
 #mainbody3 .container{background-color:rgba(0,0,0,0.8);}
-#mainbody4 {background-image:url(images/ddp.png);}
+#mainbody4 {background-image:url(../images/ddp.png);}
 #mainbody4 .container{background-color:rgba(0,0,0,0.4);}
-#mainbody5 {background-image:url(images/bg-ns.png);}
+#mainbody5 {background-image:url(../images/bg-ns.png);}
 #mainbody5 .container{background-color:rgba(0,0,0,0.4);}
-#mainbody6 {background-image:url(images/sf00.jpg)}
+#mainbody6 {background-image:url(../images/sf00.jpg)}
 #mainbody6 .container{background-color:rgba(0,0,0,0.8);}
-#mainbody7 {background-image:url(images/coexbg.png)}
+#mainbody7 {background-image:url(../images/coexbg.png)}
 #mainbody7 .container{background-color:rgba(0,0,0,0.8);}
-#mainbody8 {background-image:url(mainbody9_bg.jpg)}
-#mainbody9 {background-image:url(mainbody10_bg.jpg)}
-#mainbody10 {background-image:url(mainbody11_bg.jpg)}
-#mainbody11 {background-image:url(mainbody12_bg.jpg)}
-#mainbody12 {background-image:url(mainbody13_bg1.jpg)}
-#mainbody13 {background-image:url(mainbody14_bg.jpg)}
+#mainbody8 {background-image:url(../images/mainbody9_bg.jpg)}
+#mainbody9 {background-image:url(../images/mainbody10_bg.jpg)}
+#mainbody10 {background-image:url(../images//mainbody11_bg.jpg)}
+#mainbody11 {background-image:url(../images/mainbody12_bg.jpg)}
+#mainbody12 {background-image:url(../images/mainbody13_bg1.jpg)}
+#mainbody13 {background-image:url(../images/mainbody14_bg.jpg)}
 
 
 /* mainbody1 / 섹션별바로가기*/
