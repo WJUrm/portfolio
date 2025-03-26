@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로젝트 소개 - 서울스팟</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <style>
         body {
             background: #111;
@@ -70,13 +70,13 @@
         <div class="flex" style="flex-direction: column; width: 90%; gap: 5vh;">
             <div class="port_img" style="width: 90%;">
                 <div class="portfoLio">
-                    <img src="seoulspot.png" alt="서울스팟 페이지">
+                    <img src="images/seoulspot.png" alt="서울스팟 페이지">
                 </div>
             </div>
             <div class="flex" style="width: 90%; flex-direction: row; justify-content: space-between;">
                 <div class="column-left" style="width:45%;">
                     <a href="#" class="thumb-box" target="_blank" data-img>
-                        <img src="Logo_SeoulSpot.svg" alt="서울스팟 로고">
+                        <img src="images/Logo_SeoulSpot.svg" alt="서울스팟 로고">
                     </a>
                 </div>
                 <div class="column-right" style="width:45%; color:white;">
@@ -218,16 +218,23 @@
     <div style="margin-top:60px;">
         <h3>4th Section</h3>
         <p>네 번째 섹션은 서울을 크게 5개의 구역으로 나누어 소개합니다.</p>
-        <img src="images/section04-1.png" alt="서울 구역들">
-        <img src="images/seoul-districts.png" alt="서울 구역들">
+        <img src="images/section04_function01.png" alt="서울 구역 1">
+        <img src="images/section04_function02.png" alt="서울 구역 2" style="display:none;">
+        <div class="flex" style="justify-content: space-between;">
+            <div>
+                <p>스크롤 다운시 도심권 -> 서북권 -> 동북권 -> 서남권-> 동남권 순서로 전환됩니다.</p>
+                <p>기존 화면은 유지한 채 각 영역의 내용이 바뀌며, 지도의 경우 각 구역에 맞춰 색칠된 구역이 바뀝니다.</p>
+            </div>
+            <img src="images/seoul-districts.png" alt="서울 구역들" style="width:30%;">
+        </div>
     </div>
     <div style="margin-top:60px;">
         <h3>5th Section & 7th Section</h3>
         <p>다섯 번째 섹션은 서울에서 먹을 수 있는 음식을, 일곱 번째 섹션은 여행할 때 알면 유용한 정보들을 소개합니다. 4개의 카드 형식의 항목이 준비되어있으며, 각 항목들을 hover할 경우 크기가 커집니다. </p>
         <img src="images/section05.png" alt="다섯 번째 섹션 이미지1" style="width:70%;">
         <p></p>
-        <p>음식 섹션에선 다양한 음식이 나타난다는 느낌을 주기 위해 카드가 위아래에서 등장하게 하였으며, 정보 섹션에선 정보들이 준비되어있다는 느낌을 주기 위해 카드를 가지런히 정렬하였습니다.</p> 
-        <img src="images/section07.png" alt="일곱 번째 섹션 이미지1" style="width:70%;">
+        <p>음식 섹션에선 다양한 음식이 나타난다는 느낌을 주기 위해 ScrollTrigger를 적용하여 카드가 위아래에서 등장하게 하였으며, 정보 섹션에선 정보들이 준비되어있다는 느낌을 주기 위해 카드를 가지런히 정렬하였습니다.</p> 
+        <img src="images/section05_function.png" alt="다섯 번째 섹션 이미지1">
     </div>
     <div style="margin-top:60px;">
         <h3>6th Section</h3>
